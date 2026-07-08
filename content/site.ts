@@ -245,70 +245,34 @@ export const site = {
     closedWeekdays: [] as number[], // 0=domingo … 6=sábado
   },
 
-  // Carta completa navegable. [PENDIENTE] Es una carta de MUESTRA con la estructura de una
-  // izakaya: reemplazar platos y poner precios reales (price: número en €) cuando se confirmen.
-  // Botón de PDF listo: colocar el archivo en public/carta.pdf.
+  // Menú degustación real: Omakase «Atsu» (Verano 2026), la carta oficial del restaurante
+  // (extraída del PDF del chef). [PENDIENTE] Carta à la carte: añadir aquí cuando llegue.
   menu: {
     kicker: "La carta",
-    title: "Nuestra carta",
+    jp: "季節のおまかせ",
+    title: "Menú Omakase «Atsu»",
+    season: "Verano 2026",
     intro:
-      "Cocina de izakaya para compartir: pequeños platos que van llegando a la mesa. La carta cambia con el mercado y la temporada.",
-    pdfUrl: null as string | null, // p. ej. "/carta.pdf"
-    pdfCta: "Descargar carta (PDF)",
-    priceNote: "Precios de muestra pendientes de confirmar.",
+      "Kaiseki de temporada en ocho pases. El chef decide cada plato con el mejor producto del día del mercado y la lonja.",
+    price: 63,
     currency: "€",
-    categories: [
-      {
-        id: "entrantes",
-        name: "Para empezar",
-        jp: "前菜",
-        items: [
-          { name: "Edamame al sésamo", jp: "枝豆", desc: "Vainas de soja al vapor, sal marina y sésamo tostado.", price: null },
-          { name: "Gyozas de la casa", jp: "餃子", desc: "Empanadillas a la plancha terminadas al vapor, hechas a diario.", price: null },
-          { name: "Chicken Karaage", jp: "鶏の唐揚げ", desc: "Pollo marinado y frito al estilo japonés, crujiente y jugoso.", price: null },
-          { name: "Tempura de temporada", jp: "天ぷら", desc: "Rebozado ligero de verdura y marisco del día.", price: null },
-        ],
-      },
-      {
-        id: "sushi",
-        name: "Sushi & Sashimi",
-        jp: "鮨・刺身",
-        items: [
-          { name: "Omakase Nigiri", jp: "おまかせ握り", desc: "Selección del chef: la mejor pieza del día sobre arroz templado.", price: null },
-          { name: "Sashimi variado", jp: "刺身盛り合わせ", desc: "Pescado de lonja en cortes limpios, sin disfraz.", price: null },
-          { name: "Signature Rolls", jp: "特製ロール", desc: "Rolls de autor: técnica japonesa con guiños al sur.", price: null },
-        ],
-      },
-      {
-        id: "ramen",
-        name: "Ramen",
-        jp: "ラーメン",
-        items: [
-          { name: "Ramen Tonkotsu", jp: "豚骨ラーメン", desc: "Caldo de cerdo de cocción lenta, chashu y huevo marinado.", price: null },
-          { name: "Ramen Shoyu", jp: "醤油ラーメン", desc: "Caldo de soja claro y aromático, fideo con carácter.", price: null },
-        ],
-      },
-      {
-        id: "izakaya",
-        name: "Platos izakaya",
-        jp: "肴",
-        items: [
-          { name: "Yakitori", jp: "焼き鳥", desc: "Brochetas a la brasa de carbón, tare o sal.", price: null },
-          { name: "Berenjena nasu dengaku", jp: "茄子田楽", desc: "Berenjena glaseada con miso dulce a la parrilla.", price: null },
-          { name: "Takoyaki", jp: "たこ焼き", desc: "Bolitas de pulpo, la calle de Osaka en la mesa.", price: null },
-        ],
-      },
-      {
-        id: "bebidas",
-        name: "Sake & Cocktails",
-        jp: "酒",
-        items: [
-          { name: "Selección de sake", jp: "日本酒", desc: "Junmai, ginjo y daiginjo, servidos a su temperatura.", price: null },
-          { name: "Highball japonés", jp: "ハイボール", desc: "Whisky japonés, soda y hielo. Fresco y directo.", price: null },
-          { name: "Cerveza japonesa", jp: "ビール", desc: "Lager ligera, la compañera de la izakaya.", price: null },
-        ],
-      },
+    priceUnit: "por persona",
+    conditions: [
+      "Solo por encargo, con un día de antelación",
+      "Se sirve únicamente a mesa completa",
     ],
+    cta: "Reservar el omakase",
+    courses: [
+      { jp: "先付", romaji: "Sakizuke", role: "Primer bocado", dish: "Karasumi de bacalao, kombu y manzanilla" },
+      { jp: "向付", romaji: "Mukōzuke", role: "Crudos", dish: "Tataki de bonito ponzu · Calamar irizake · Gamba blanca kizami wasabi" },
+      { jp: "椀物", romaji: "Wanmono", role: "Sopa", dish: "Dashi «Thai» con dumpling de carabinero" },
+      { jp: "焼物", romaji: "Yakimono", role: "A la brasa", dish: "Corvina Yuan" },
+      { jp: "酢の物", romaji: "Sunomono", role: "Aliñados al vinagre", dish: "Tres tomates y ventresca de bonito" },
+      { jp: "揚物", romaji: "Agemono", role: "Fritos", dish: "Piparras en tempura y mojama" },
+      { jp: "〆", romaji: "Shime", role: "Cierre salado", dish: "Somen de pato" },
+      { jp: "水物", romaji: "Mizumono", role: "Postre", dish: "Sopa de té verde, bizcocho y fruta de la pasión" },
+    ],
+    pdfUrl: null as string | null, // p. ej. "/carta.pdf" cuando exista la à la carte
   },
 
   footer: {

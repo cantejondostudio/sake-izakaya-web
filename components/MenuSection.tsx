@@ -1,99 +1,79 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { site } from "@/content/site";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
 
-function formatPrice(price: number | null, currency: string) {
-  if (price == null) return "—";
-  return `${price.toFixed(2)} ${currency}`;
-}
-
 export default function MenuSection() {
   const { menu } = site;
-  const [active, setActive] = useState(menu.categories[0]?.id ?? "");
-  const current = menu.categories.find((c) => c.id === active) ?? menu.categories[0];
 
   return (
     <section id="carta" className="scroll-mt-20 px-6 py-28 md:py-36">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading kicker={menu.kicker} title={menu.title} intro={menu.intro} align="center" />
+      <div className="mx-auto max-w-3xl">
+        <SectionHeading kicker={menu.kicker} title={menu.title} align="center" />
 
-        {/* Pestañas de categoría */}
-        <Reveal delay={0.1}>
-          <div
-            role="tablist"
-            aria-label="Categorías de la carta"
-            className="mt-12 flex flex-wrap justify-center gap-2 border-b border-beige/10 pb-4"
-          >
-            {menu.categories.map((cat) => (
-              <button
-                key={cat.id}
-                role="tab"
-                aria-selected={active === cat.id}
-                onClick={() => setActive(cat.id)}
-                className={`group flex items-center gap-2 px-4 py-2 text-[0.72rem] uppercase tracking-[0.18em] transition-colors duration-300 ${
-                  active === cat.id ? "text-cream" : "text-beige-dim hover:text-beige"
-                }`}
-              >
-                <span className="font-jp text-sm text-aka-soft" aria-hidden="true">
-                  {cat.jp}
-                </span>
-                {cat.name}
-                <span
-                  className={`block h-px bg-aka transition-all duration-300 ${
-                    active === cat.id ? "w-5" : "w-0 group-hover:w-3"
-                  }`}
-                />
-              </button>
-            ))}
+        {/* Subtítulo: japonés + temporada */}
+        <Reveal delay={0.05}>
+          <div className="mt-4 flex flex-col items-center gap-2 text-center">
+            <p className="font-jp text-lg text-aka-soft" aria-hidden="true">
+              {menu.jp}
+            </p>
+            <p className="text-[0.7rem] uppercase tracking-[0.3em] text-beige-dim">{menu.season}</p>
           </div>
         </Reveal>
 
-        {/* Platos de la categoría activa. Keyed por id: al cambiar de pestaña React
-            desmonta la lista anterior y monta la nueva, que anima su entrada. */}
-        <motion.ul
-            key={current.id}
-            role="tabpanel"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-12 divide-y divide-beige/10"
-          >
-            {current.items.map((item) => (
-              <li key={item.name} className="flex items-baseline gap-4 py-5">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline gap-3">
-                    <h3 className="font-serif text-xl text-cream">{item.name}</h3>
-                    <span className="font-jp text-sm text-aka-soft" aria-hidden="true">
-                      {item.jp}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm leading-relaxed text-beige-dim">{item.desc}</p>
-                </div>
-                {/* Línea de puntos hasta el precio, estilo carta editorial */}
-                <span className="hidden flex-1 translate-y-[-3px] border-b border-dotted border-beige/20 sm:block" />
-                <span className="shrink-0 font-serif text-lg text-beige">
-                  {formatPrice(item.price, menu.currency)}
-                </span>
-              </li>
-            ))}
-          </motion.ul>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-6 max-w-xl text-center text-sm leading-relaxed text-beige-dim">
+            {menu.intro}
+          </p>
+        </Reveal>
 
-        <Reveal className="mt-12 flex flex-col items-center gap-4 text-center">
-          {menu.pdfUrl && (
-            <a
-              href={menu.pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-beige/40 px-8 py-3.5 text-[0.72rem] uppercase tracking-[0.25em] text-beige transition-all duration-300 hover:border-cream hover:text-cream"
-            >
-              {menu.pdfCta}
-            </a>
-          )}
-          <p className="text-xs uppercase tracking-[0.16em] text-beige-dim/60">{menu.priceNote}</p>
+        {/* Los pases del omakase, en orden */}
+        <ol className="mt-14 divide-y divide-beige/10 border-y border-beige/10">
+          {menu.courses.map((c, i) => (
+            <Reveal key={c.romaji} delay={0.04 * (i % 8)}>
+              <li className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-5 py-5 sm:grid-cols-[9rem_1fr]">
+                {/* Pase: kanji + romaji */}
+                <div className="flex items-baseline gap-3">
+                  <span className="font-jp text-xl leading-none text-aka-soft" aria-hidden="true">
+                    {c.jp}
+                  </span>
+                  <span className="hidden font-serif text-lg text-cream sm:inline">{c.romaji}</span>
+                </div>
+                {/* Plato + rol */}
+                <div className="min-w-0">
+                  <p className="font-serif text-lg leading-snug text-cream">{c.dish}</p>
+                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-beige-dim">
+                    <span className="sm:hidden">{c.romaji} · </span>
+                    {c.role}
+                  </p>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+
+        {/* Precio, condiciones y llamada a reservar */}
+        <Reveal className="mt-12 flex flex-col items-center gap-6 text-center">
+          <div>
+            <span className="font-serif text-5xl text-cream">
+              {menu.price} {menu.currency}
+            </span>
+            <p className="mt-1 text-[0.7rem] uppercase tracking-[0.25em] text-beige-dim">
+              {menu.priceUnit}
+            </p>
+          </div>
+          <ul className="space-y-1.5 text-[0.72rem] uppercase tracking-[0.16em] text-beige-dim/70">
+            {menu.conditions.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+          <a
+            href="#reservar"
+            className="mt-1 bg-aka px-9 py-3.5 text-[0.72rem] uppercase tracking-[0.25em] text-cream transition-opacity duration-300 hover:opacity-90"
+          >
+            {menu.cta}
+          </a>
         </Reveal>
       </div>
     </section>
