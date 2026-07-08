@@ -278,8 +278,10 @@ export const site = {
   footer: {
     description:
       "Taberna japonesa en el Centro Histórico de Málaga. Sushi artesanal, ramen, platos para compartir y una cuidada selección de sake.",
-    // [PENDIENTE] @redes reales — añadir cuando se confirmen.
-    social: [] as { name: string; url: string }[],
+    // Redes. [PENDIENTE] TikTok / Facebook si los hay.
+    social: [
+      { name: "Instagram", url: "https://www.instagram.com/sakeizakaya/" },
+    ] as { name: string; url: string }[],
     copyright: `© ${new Date().getFullYear()} Sake Izakaya · Taberna japonesa · Málaga`,
   },
 

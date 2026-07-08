@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 /* JSON-LD LocalBusiness/Restaurant — solo datos reales confirmados.
    [PENDIENTE] añadir: telephone, url, priceRange, openingHoursSpecification
-   (faltan días de cierre), sameAs (@redes). */
+   (faltan días de cierre). */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
@@ -50,6 +50,7 @@ const jsonLd = {
     addressCountry: "ES",
   },
   founder: { "@type": "Person", name: "Juan López Ramos" },
+  sameAs: site.footer.social.map((s) => s.url),
 };
 
 export default function RootLayout({
