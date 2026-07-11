@@ -231,7 +231,7 @@ export const site = {
     // --- Formulario de reserva propio (funcional) ---
     // Número de WhatsApp del restaurante en formato internacional sin signos, p. ej. "34600000000".
     // [PENDIENTE] En cuanto se confirme, el formulario enviará la solicitud por WhatsApp.
-    whatsappNumber: null as string | null,
+    whatsappNumber: "34611450445" as string | null, // +34 611 45 04 45 (formato wa.me: sin + ni espacios)
     // Email al que llega la solicitud si se configura el envío por correo (fallback mailto).
     // [PENDIENTE] p. ej. "reservas@sakeizakaya.es"
     email: null as string | null,
