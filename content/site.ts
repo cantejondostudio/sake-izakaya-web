@@ -375,7 +375,8 @@ export const site = {
   nav: [
     { label: "Inicio", href: "#inicio" },
     { label: "Carta", href: "#carta" },
-    { label: "Sobre nosotros", href: "#historia" },
+    { label: "Bebidas", href: "#bebidas" },
+    { label: "Nosotros", href: "#historia" },
     { label: "Galería", href: "#galeria" },
     { label: "Experiencia", href: "#experiencia" },
     { label: "Contacto", href: "#contacto" },
