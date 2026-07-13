@@ -1,5 +1,6 @@
 import { site } from "@/content/site";
 import Reveal from "./ui/Reveal";
+import ReservationModal from "./ReservationModal";
 
 /**
  * Cierre potente de reservas.
@@ -32,28 +33,8 @@ export default function ReservationCTA() {
         <p className="mt-6 max-w-xl text-base leading-relaxed text-beige md:text-lg">
           {reservation.text}
         </p>
-        <div className="mt-12 w-full max-w-2xl">
-          {/* Motor de reservas de CoverManager incrustado */}
-          <div className="overflow-hidden rounded-lg border border-beige/15 bg-cream shadow-2xl">
-            <iframe
-              src={reservation.url}
-              title="Reservas · CoverManager"
-              className="h-[720px] w-full"
-              loading="lazy"
-            />
-          </div>
-          <p className="mt-5 text-sm text-beige-dim">
-            ¿No carga el calendario?{" "}
-            <a
-              href={reservation.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cream underline underline-offset-4 transition-colors hover:text-aka-soft"
-            >
-              Reserva en una pestaña nueva
-            </a>
-            .
-          </p>
+        <div className="mt-12 flex flex-col items-center">
+          <ReservationModal />
         </div>
       </Reveal>
     </section>
