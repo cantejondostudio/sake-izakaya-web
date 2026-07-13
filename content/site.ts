@@ -225,8 +225,9 @@ export const site = {
     cta: "Reservar ahora",
     // Canal de reserva externo real: perfil de Google. Preparado para cambiar a TheFork,
     // CoverManager, OpenTable cambiando solo `url` (y `provider` como etiqueta).
-    provider: "google" as "google" | "thefork" | "covermanager" | "opentable" | "whatsapp",
-    url: "https://www.google.com/maps/search/?api=1&query=Sake+Izakaya+Calle+San+Juan+de+Letr%C3%A1n+M%C3%A1laga",
+    provider: "covermanager" as "google" | "thefork" | "covermanager" | "opentable" | "whatsapp",
+    // Motor de reservas real (CoverManager, cuenta SAKEIZAKAYA). Se incrusta en la sección de reservas.
+    url: "https://www.covermanager.com/reserve/module_restaurant/sake-izakaya/spanish",
 
     // --- Formulario de reserva propio (funcional) ---
     // Número de WhatsApp del restaurante en formato internacional sin signos, p. ej. "34600000000".

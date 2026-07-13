@@ -1,12 +1,10 @@
 import { site } from "@/content/site";
 import Reveal from "./ui/Reveal";
-import ReservationForm from "./ReservationForm";
 
 /**
  * Cierre potente de reservas.
- * El destino del botón se controla desde content/site.ts (`reservation.url`):
- * hoy apunta al canal real (perfil de Google); preparado para TheFork,
- * CoverManager, OpenTable o WhatsApp cambiando solo esa URL.
+ * Motor de reservas real incrustado (CoverManager) desde `reservation.url`.
+ * Cambiando esa URL se puede apuntar a otro proveedor sin tocar el componente.
  */
 export default function ReservationCTA() {
   const { reservation } = site;
@@ -34,8 +32,28 @@ export default function ReservationCTA() {
         <p className="mt-6 max-w-xl text-base leading-relaxed text-beige md:text-lg">
           {reservation.text}
         </p>
-        <div className="mt-12 w-full">
-          <ReservationForm />
+        <div className="mt-12 w-full max-w-2xl">
+          {/* Motor de reservas de CoverManager incrustado */}
+          <div className="overflow-hidden rounded-lg border border-beige/15 bg-cream shadow-2xl">
+            <iframe
+              src={reservation.url}
+              title="Reservas · CoverManager"
+              className="h-[720px] w-full"
+              loading="lazy"
+            />
+          </div>
+          <p className="mt-5 text-sm text-beige-dim">
+            ¿No carga el calendario?{" "}
+            <a
+              href={reservation.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream underline underline-offset-4 transition-colors hover:text-aka-soft"
+            >
+              Reserva en una pestaña nueva
+            </a>
+            .
+          </p>
         </div>
       </Reveal>
     </section>
