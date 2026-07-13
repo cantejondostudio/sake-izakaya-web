@@ -202,12 +202,12 @@ export const site = {
     kicker: "Horarios y ubicación",
     title: "Te esperamos en el Centro",
     schedule: [
-      { label: "Comida", value: "13:00 — última mesa 15:15" },
-      { label: "Cena", value: "20:00 — última mesa 23:15" },
+      { label: "Comida", value: "13:00 – 16:00" },
+      { label: "Cena", value: "19:00 – 23:00" },
     ],
-    scheduleNote: "Días de cierre semanal: [PENDIENTE de confirmar]",
-    address: ["C. San Juan de Letrán", "29012 Málaga"],
-    phone: "[PENDIENTE]",
+    scheduleNote: "Abierto de martes a sábado. Domingo y lunes, cerrado.",
+    address: ["C. San Juan de Letrán 4", "29012 Málaga"],
+    phone: "+34 635 57 88 81",
     email: "[PENDIENTE]",
     zoneText:
       "Estamos en pleno Centro Histórico de Málaga, una zona mayormente peatonal: lo más cómodo es venir andando o dejar el coche en cualquiera de los aparcamientos públicos del centro.",
@@ -238,11 +238,11 @@ export const site = {
     maxParty: 8, // grupos mayores → se gestionan por teléfono
     // Franjas horarias por servicio (última mesa incluida).
     services: [
-      { label: "Comida", slots: ["13:00", "13:30", "14:00", "14:30", "15:00"] },
-      { label: "Cena", slots: ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30"] },
+      { label: "Comida", slots: ["13:00", "13:30", "14:00", "14:30", "15:00", "15:30"] },
+      { label: "Cena", slots: ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"] },
     ],
-    // [PENDIENTE] Días de cierre — mientras no se confirmen, no se bloquea ningún día.
-    closedWeekdays: [] as number[], // 0=domingo … 6=sábado
+    // Cierra domingo (0) y lunes (1); abierto de martes a sábado.
+    closedWeekdays: [0, 1] as number[], // 0=domingo … 6=sábado
   },
 
   // Menú degustación real: Omakase «Atsu» (Verano 2026), la carta oficial del restaurante

@@ -35,20 +35,34 @@ export const metadata: Metadata = {
 };
 
 /* JSON-LD LocalBusiness/Restaurant — solo datos reales confirmados.
-   [PENDIENTE] añadir: telephone, url, priceRange, openingHoursSpecification
-   (faltan días de cierre). */
+   [PENDIENTE] añadir: url (dominio final), priceRange. */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   name: site.nameFull,
   servesCuisine: "Japonesa",
+  telephone: "+34 635 57 88 81",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "C. San Juan de Letrán",
+    streetAddress: "C. San Juan de Letrán 4",
     addressLocality: "Málaga",
     postalCode: "29012",
     addressCountry: "ES",
   },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "13:00",
+      closes: "16:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "19:00",
+      closes: "23:00",
+    },
+  ],
   founder: { "@type": "Person", name: "Juan López Ramos" },
   sameAs: site.footer.social.map((s) => s.url),
 };
