@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import StorySection from "@/components/StorySection";
 import ChefSelection from "@/components/ChefSelection";
 import MenuSection from "@/components/MenuSection";
+import DrinksSection from "@/components/DrinksSection";
 import CraftSection from "@/components/CraftSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import Gallery from "@/components/Gallery";
@@ -21,6 +22,7 @@ export default function Home() {
         <StorySection />
         <ChefSelection />
         <MenuSection />
+        <DrinksSection />
         <CraftSection />
         <ExperienceSection />
         <Gallery />

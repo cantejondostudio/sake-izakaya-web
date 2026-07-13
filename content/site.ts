@@ -22,13 +22,13 @@ export const site = {
   seo: {
     title: "Sake Izakaya | Restaurante Japonés Izakaya en Málaga",
     description:
-      "Restaurante japonés izakaya en Málaga. Sushi artesanal, ramen, platos japoneses para compartir, sake y reservas online.",
+      "Restaurante japonés izakaya en Málaga. Sashimi, ramen, brasa, platos japoneses para compartir, sake y reservas online.",
   },
 
   hero: {
     kicker: "Izakaya japonés auténtico · Málaga",
     subtitleJp: "マラガの居酒屋",
-    text: "Donde la tradición japonesa se encuentra con la energía de Málaga. Sushi artesanal, ramen reconfortante, platos para compartir y una cuidada selección de sake.",
+    text: "Donde la tradición japonesa se encuentra con la energía de Málaga. Sashimi de lonja, ramen reconfortante, brasa, platos para compartir y una cuidada selección de sake.",
     ctaPrimary: "Reservar mesa",
     ctaSecondary: "Ver carta",
     image: "/gallery/sake-017.jpg", // brasa/robata — fallback en móvil / mientras carga el vídeo
@@ -59,9 +59,9 @@ export const site = {
     cta: "Ver carta completa",
     dishes: [
       {
-        name: "Omakase Nigiri",
-        jp: "おまかせ握り",
-        desc: "Confía en el chef: la mejor pieza del día, cortada al momento sobre arroz templado.",
+        name: "Crudos de temporada",
+        jp: "向付",
+        desc: "Tataki, ponzu y cítricos: el mejor pescado de lonja del día, en cortes limpios.",
         imageLabel: "Pescado de temporada emplatado por el chef",
         src: "/gallery/sake-034.jpg",
       },
@@ -124,9 +124,9 @@ export const site = {
       "Cocinamos como se cocina en Japón: pocas cosas, muy bien hechas. Caldos de casa, pescado fresco de lonja, arroz japonés trabajado a diario y una carta que respira con la temporada.",
     blocks: [
       {
-        kanji: "鮨",
-        title: "Sushi & Sashimi",
-        desc: "Arroz japonés en su punto exacto de temperatura y avinagrado, pescado seleccionado pieza a pieza y el corte como gesto final.",
+        kanji: "魚",
+        title: "Sashimi & Crudos",
+        desc: "Pescado de lonja seleccionado pieza a pieza, cortes limpios y aliños precisos. El producto, sin disfraz.",
       },
       {
         kanji: "麺",
@@ -180,7 +180,7 @@ export const site = {
     note: "Testimonios de muestra — se sustituirán por reseñas reales de Google.",
     items: [
       {
-        text: "Cruzas la puerta y estás en Osaka. La barra, la luz, el sake… y un nigiri que no olvidas.",
+        text: "Cruzas la puerta y estás en Osaka. La barra, la luz, el sake… y un bocado que no olvidas.",
         author: "Placeholder · Cliente de Google",
       },
       {
@@ -192,7 +192,7 @@ export const site = {
         author: "Placeholder · Cliente de Google",
       },
       {
-        text: "Perfecto para compartir: gyozas, karaage, un roll y sake. Volvemos seguro.",
+        text: "Perfecto para compartir: gyozas, karaage, brasa y sake. Volvemos seguro.",
         author: "Placeholder · Cliente de Google",
       },
     ],
@@ -275,9 +275,96 @@ export const site = {
     pdfUrl: null as string | null, // p. ej. "/carta.pdf" cuando exista la à la carte
   },
 
+  // Carta de bebidas real (del documento del restaurante). Precio = string exacto en €.
+  drinks: {
+    kicker: "Bebidas",
+    jp: "お酒",
+    title: "Carta de bebidas",
+    intro: "Sake japonés, vinos de nuestra tierra y espumosos para acompañar la mesa.",
+    categories: [
+      {
+        name: "Cervezas & refrescos",
+        items: [
+          { name: "Caña de Victoria", price: "2,80" },
+          { name: "Sapporo", price: "3,80" },
+          { name: "Kirin", price: "3,60" },
+          { name: "Victoria 0,0", price: "2,80" },
+          { name: "Copa de Ribera · Ripa Dorii", price: "3,80" },
+          { name: "Copa de Rioja · Garu", price: "3,80" },
+          { name: "Copa de Verdejo · Ripa Dorii", price: "3,80" },
+          { name: "Copa de Chardonnay · Entrechuelos", price: "3,80" },
+          { name: "Tinto de verano", price: "3,50" },
+          { name: "Vermut", price: "4,00" },
+          { name: "Refresco con gas", price: "2,80" },
+          { name: "Refresco sin gas", price: "2,60" },
+          { name: "Agua", price: "2,60" },
+          { name: "Agua con gas", price: "2,80" },
+        ],
+      },
+      {
+        name: "Jarritas de sake",
+        jp: "日本酒",
+        items: [
+          { name: "Keigetsu Gin-no-Yume", price: "12,00" },
+          { name: "Shalala · 300 ml", price: "17,00" },
+          { name: "Sotenden · 750 ml", price: "39,00" },
+          { name: "Akitora Junmai", price: "9,50" },
+          { name: "Kubota", price: "10,00" },
+          { name: "Choya Umeshu", price: "9,50" },
+        ],
+      },
+      {
+        name: "Vinos · Rioja",
+        items: [
+          { name: "Luis Cañás Crianza", price: "28,00" },
+          { name: "Garu Crianza", price: "21,00" },
+        ],
+      },
+      {
+        name: "Vinos · Ribera del Duero",
+        items: [
+          { name: "Ripa Dorii Roble · Tempranillo", price: "22,00" },
+          { name: "Pruno Crianza · Tempranillo · Cabernet · Merlot", price: "27,00" },
+          { name: "Matarromera Crianza", price: "53,00" },
+        ],
+      },
+      {
+        name: "Vinos · Sierras de Málaga",
+        items: [
+          { name: "Descalzos Viejos", price: "27,00" },
+        ],
+      },
+      {
+        name: "Blancos",
+        items: [
+          { name: "Entrechuelos Chardonnay", price: "22,00" },
+          { name: "Emina Albariño", price: "26,00" },
+          { name: "Bobal · Vicente Gandía", price: "28,00" },
+          { name: "Tilenus Godello · Bierzo", price: "26,00" },
+          { name: "Ripa Verdejo", price: "21,00" },
+          { name: "Manzanilla Alegría", price: "23,00" },
+        ],
+      },
+      {
+        name: "Rosado",
+        items: [
+          { name: "Emina Rosé", price: "22,00" },
+        ],
+      },
+      {
+        name: "Espumosos",
+        items: [
+          { name: "Cava Miracle Brut · Vicente Gandía", price: "26,00" },
+          { name: "Champagne Veuve Clicquot", price: "97,00" },
+          { name: "Veuve Ambar", price: "28,00" },
+        ],
+      },
+    ],
+  },
+
   footer: {
     description:
-      "Taberna japonesa en el Centro Histórico de Málaga. Sushi artesanal, ramen, platos para compartir y una cuidada selección de sake.",
+      "Taberna japonesa en el Centro Histórico de Málaga. Sashimi, ramen, brasa, platos para compartir y una cuidada selección de sake.",
     // Redes. [PENDIENTE] TikTok / Facebook si los hay.
     social: [
       { name: "Instagram", url: "https://www.instagram.com/sakeizakaya/" },
