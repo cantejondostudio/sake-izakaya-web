@@ -7,7 +7,6 @@ import DrinksSection from "@/components/DrinksSection";
 import CraftSection from "@/components/CraftSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import Gallery from "@/components/Gallery";
-import Reviews from "@/components/Reviews";
 import HoursLocation from "@/components/HoursLocation";
 import ReservationCTA from "@/components/ReservationCTA";
 import Footer from "@/components/Footer";
@@ -26,7 +25,6 @@ export default function Home() {
         <CraftSection />
         <ExperienceSection />
         <Gallery />
-        <Reviews />
         <HoursLocation />
         <ReservationCTA />
       </main>

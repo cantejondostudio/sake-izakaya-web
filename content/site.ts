@@ -87,9 +87,9 @@ export const site = {
         src: "/gallery/sake-025.jpg",
       },
       {
-        name: "Signature Rolls",
-        jp: "特製ロール",
-        desc: "Nuestros rolls de autor: técnica japonesa, guiños al sur.",
+        name: "A la brasa",
+        jp: "焼物",
+        desc: "Pescado y verdura de temporada al carbón: el corazón de la izakaya.",
         imageLabel: "Plato de autor emplatado",
         src: "/gallery/sake-032.jpg",
       },

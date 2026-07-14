@@ -52,21 +52,19 @@ export default function HoursLocation() {
                     )}
                   </dd>
                 </div>
-                <div>
-                  <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Email</dt>
-                  <dd className="mt-3">
-                    {pending(hours.email) ? (
-                      <span className="text-sm text-beige-dim/60">{hours.email}</span>
-                    ) : (
+                {!pending(hours.email) && (
+                  <div>
+                    <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Email</dt>
+                    <dd className="mt-3">
                       <a
                         href={`mailto:${hours.email}`}
                         className="text-beige underline-offset-4 hover:text-cream hover:underline"
                       >
                         {hours.email}
                       </a>
-                    )}
-                  </dd>
-                </div>
+                    </dd>
+                  </div>
+                )}
               </div>
             </dl>
 
