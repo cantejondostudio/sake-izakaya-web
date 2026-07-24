@@ -22,13 +22,13 @@ export const site = {
   seo: {
     title: "Sake Izakaya | Restaurante Japonés Izakaya en Málaga",
     description:
-      "Restaurante japonés izakaya en Málaga. Sashimi, ramen, brasa, platos japoneses para compartir, sake y reservas online.",
+      "Restaurante japonés izakaya en Málaga. Sashimi, omakase, brasa, tempura, platos japoneses para compartir, sake y reservas online.",
   },
 
   hero: {
     kicker: "Izakaya japonés auténtico · Málaga",
     subtitleJp: "マラガの居酒屋",
-    text: "Donde la tradición japonesa se encuentra con la energía de Málaga. Sashimi de lonja, ramen reconfortante, brasa, platos para compartir y una cuidada selección de sake.",
+    text: "Donde la tradición japonesa se encuentra con la energía de Málaga. Sashimi de lonja, caldos reconfortantes, brasa, platos para compartir y una cuidada selección de sake.",
     ctaPrimary: "Reservar mesa",
     ctaSecondary: "Ver carta",
     image: "/gallery/sake-017.jpg", // brasa/robata — fallback en móvil / mientras carga el vídeo
@@ -66,9 +66,9 @@ export const site = {
         src: "/gallery/sake-034.jpg",
       },
       {
-        name: "Ramen Tonkotsu",
-        jp: "豚骨ラーメン",
-        desc: "Caldo de cocción lenta, denso y reconfortante, con chashu y huevo marinado.",
+        name: "Dashi «Thai»",
+        jp: "椀物",
+        desc: "Caldo dashi de casa con acento thai y dumpling de carabinero.",
         imageLabel: "Bol de caldo humeante con marisco",
         src: "/gallery/sake-014.jpg",
       },
@@ -129,9 +129,9 @@ export const site = {
         desc: "Pescado de lonja seleccionado pieza a pieza, cortes limpios y aliños precisos. El producto, sin disfraz.",
       },
       {
-        kanji: "麺",
-        title: "Ramen",
-        desc: "Caldos caseros de cocción lenta, fideos con carácter y ese primer sorbo que reconcilia con el día.",
+        kanji: "椀",
+        title: "Caldos y sopas",
+        desc: "Dashi de casa y sopas de temporada: ese primer sorbo caliente que reconcilia con el día.",
       },
       {
         kanji: "肴",
@@ -184,7 +184,7 @@ export const site = {
         author: "Placeholder · Cliente de Google",
       },
       {
-        text: "El ramen más honesto que he comido fuera de Japón. Se nota el caldo de casa.",
+        text: "El dashi más honesto que he probado fuera de Japón. Se nota el caldo de casa.",
         author: "Placeholder · Cliente de Google",
       },
       {
@@ -365,7 +365,7 @@ export const site = {
 
   footer: {
     description:
-      "Taberna japonesa en el Centro Histórico de Málaga. Sashimi, ramen, brasa, platos para compartir y una cuidada selección de sake.",
+      "Taberna japonesa en el Centro Histórico de Málaga. Sashimi, brasa, tempura, platos para compartir y una cuidada selección de sake.",
     // Redes. [PENDIENTE] TikTok / Facebook si los hay.
     social: [
       { name: "Instagram", url: "https://www.instagram.com/sakeizakaya/" },
