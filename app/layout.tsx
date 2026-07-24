@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },
+  verification: { google: "RtFKDMypx--1iYqukBttjP4WOV0MucK0chKybKQAMcI" },
 };
 
 /* JSON-LD LocalBusiness/Restaurant — solo datos reales confirmados.
