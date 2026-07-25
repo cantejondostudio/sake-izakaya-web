@@ -71,7 +71,7 @@ const jsonLd = {
   "@type": "Restaurant",
   name: site.nameFull,
   servesCuisine: "Japonesa",
-  telephone: "+34 635 57 88 81",
+  telephone: "+34 611 45 04 45",
   address: {
     "@type": "PostalAddress",
     streetAddress: "C. San Juan de Letrán 4",

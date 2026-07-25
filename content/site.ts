@@ -207,7 +207,7 @@ export const site = {
     ],
     scheduleNote: "Abierto de martes a domingo. Lunes, cerrado.",
     address: ["C. San Juan de Letrán 4", "29012 Málaga"],
-    phone: "+34 635 57 88 81",
+    phone: "+34 611 45 04 45",
     email: "[PENDIENTE]",
     zoneText:
       "Estamos en pleno Centro Histórico de Málaga, una zona mayormente peatonal: lo más cómodo es venir andando o dejar el coche en cualquiera de los aparcamientos públicos del centro.",
