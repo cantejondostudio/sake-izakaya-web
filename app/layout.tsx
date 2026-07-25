@@ -82,15 +82,15 @@ const jsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "13:00",
-      closes: "16:00",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "13:30",
+      closes: "16:30",
     },
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "19:00",
-      closes: "23:00",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "20:00",
+      closes: "00:00",
     },
   ],
   founder: { "@type": "Person", name: "Juan López Ramos" },

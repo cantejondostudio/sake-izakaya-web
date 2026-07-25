@@ -202,10 +202,10 @@ export const site = {
     kicker: "Horarios y ubicación",
     title: "Te esperamos en el Centro",
     schedule: [
-      { label: "Comida", value: "13:00 – 16:00" },
-      { label: "Cena", value: "19:00 – 23:00" },
+      { label: "Comida", value: "13:30 – 16:30" },
+      { label: "Cena", value: "20:00 – 00:00" },
     ],
-    scheduleNote: "Abierto de martes a sábado. Domingo y lunes, cerrado.",
+    scheduleNote: "Abierto de martes a domingo. Lunes, cerrado.",
     address: ["C. San Juan de Letrán 4", "29012 Málaga"],
     phone: "+34 635 57 88 81",
     email: "[PENDIENTE]",
@@ -239,11 +239,11 @@ export const site = {
     maxParty: 8, // grupos mayores → se gestionan por teléfono
     // Franjas horarias por servicio (última mesa incluida).
     services: [
-      { label: "Comida", slots: ["13:00", "13:30", "14:00", "14:30", "15:00", "15:30"] },
-      { label: "Cena", slots: ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"] },
+      { label: "Comida", slots: ["13:30", "14:00", "14:30", "15:00", "15:30", "16:00"] },
+      { label: "Cena", slots: ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"] },
     ],
-    // Cierra domingo (0) y lunes (1); abierto de martes a sábado.
-    closedWeekdays: [0, 1] as number[], // 0=domingo … 6=sábado
+    // Cierra solo lunes (1); abierto de martes a domingo.
+    closedWeekdays: [1] as number[], // 0=domingo … 6=sábado
   },
 
   // Menú degustación real: Omakase «Atsu» (Verano 2026), la carta oficial del restaurante
