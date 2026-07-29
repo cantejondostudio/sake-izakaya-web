@@ -1,8 +1,11 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 
 export default function HoursLocation() {
+  const site = useSite();
   const { hours } = site;
   const pending = (v: string) => v.includes("PENDIENTE");
 
@@ -15,7 +18,7 @@ export default function HoursLocation() {
           <Reveal delay={0.15}>
             <dl className="mt-10 space-y-6">
               <div>
-                <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Horario de cocina</dt>
+                <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.scheduleTitle}</dt>
                 <dd className="mt-3 space-y-1.5">
                   {hours.schedule.map((row) => (
                     <div key={row.label} className="flex gap-6 text-beige">
@@ -28,7 +31,7 @@ export default function HoursLocation() {
               </div>
 
               <div>
-                <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Dirección</dt>
+                <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.address}</dt>
                 <dd className="mt-3 text-beige">
                   {hours.address.map((line) => (
                     <p key={line}>{line}</p>
@@ -38,7 +41,7 @@ export default function HoursLocation() {
 
               <div className="flex gap-14">
                 <div>
-                  <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Teléfono</dt>
+                  <dt className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.phone}</dt>
                   <dd className="mt-3">
                     {pending(hours.phone) ? (
                       <span className="text-sm text-beige-dim/60">{hours.phone}</span>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { site } from "@/content/site";
+import { useSite } from "@/components/LangProvider";
 
 /**
  * Hero a pantalla completa.
@@ -12,6 +12,7 @@ import { site } from "@/content/site";
  * object-cover"> como primer hijo del <div> de fondo.
  */
 export default function Hero() {
+  const site = useSite();
   return (
     <section id="inicio" aria-label="Portada" className="relative flex min-h-svh items-center justify-center overflow-hidden">
       {/* Fondo: vídeo real (escritorio) sobre fotografía de póster/fallback (móvil), + capas cálidas */}

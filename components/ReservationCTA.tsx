@@ -1,4 +1,6 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import ReservationModal from "./ReservationModal";
 
@@ -8,6 +10,7 @@ import ReservationModal from "./ReservationModal";
  * Cambiando esa URL se puede apuntar a otro proveedor sin tocar el componente.
  */
 export default function ReservationCTA() {
+  const site = useSite();
   const { reservation } = site;
   return (
     <section

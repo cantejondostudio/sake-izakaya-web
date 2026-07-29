@@ -1,9 +1,12 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
 
 export default function StorySection() {
+  const site = useSite();
   const { story } = site;
   return (
     <section id="historia" className="scroll-mt-20 px-6 py-28 md:py-36">

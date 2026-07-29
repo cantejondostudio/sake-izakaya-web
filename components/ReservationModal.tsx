@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { site } from "@/content/site";
+import { useSite } from "@/components/LangProvider";
 
 /**
  * Reserva acorde con la estética de la web: un botón de marca que abre el motor
@@ -12,6 +12,7 @@ import { site } from "@/content/site";
  * atraparía). Sin animaciones JS: siempre visible al abrir.
  */
 export default function ReservationModal() {
+  const site = useSite();
   const { reservation } = site;
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
@@ -36,10 +37,10 @@ export default function ReservationModal() {
         onClick={() => setOpen(true)}
         className="bg-aka px-11 py-4 text-[0.72rem] uppercase tracking-[0.28em] text-cream shadow-lg shadow-aka/20 transition-all duration-300 hover:opacity-90 hover:shadow-aka/30"
       >
-        Reservar mesa
+        {site.hero.ctaPrimary}
       </button>
       <p className="mt-5 text-[0.68rem] uppercase tracking-[0.22em] text-beige-dim/70">
-        Disponibilidad en tiempo real · CoverManager
+        {site.ui.reserveTagline}
       </p>
 
       {open &&
@@ -49,12 +50,12 @@ export default function ReservationModal() {
             onClick={close}
             role="dialog"
             aria-modal="true"
-            aria-label="Reservar mesa"
+            aria-label={site.hero.ctaPrimary}
           >
             <button
               type="button"
               onClick={close}
-              aria-label="Cerrar"
+              aria-label={site.ui.close}
               className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center text-2xl text-cream/70 transition-colors hover:text-cream"
             >
               ✕

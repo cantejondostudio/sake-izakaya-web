@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import { site } from "@/content/site";
+import { useSite } from "@/components/LangProvider";
 
 export default function Footer() {
+  const site = useSite();
   const { footer, hours } = site;
   return (
     <footer className="border-t border-beige/10 bg-ink px-6 py-16">
@@ -40,8 +43,8 @@ export default function Footer() {
           {/* [PENDIENTE] @redes sociales — se añaden en content/site.ts → footer.social */}
         </div>
 
-        <nav aria-label="Enlaces rápidos">
-          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Enlaces</p>
+        <nav aria-label={site.ui.links}>
+          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.links}</p>
           <ul className="mt-4 space-y-2.5">
             {site.nav.map((item) => (
               <li key={item.href}>
@@ -57,7 +60,7 @@ export default function Footer() {
         </nav>
 
         <div>
-          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Horarios</p>
+          <p className="text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.hours}</p>
           <ul className="mt-4 space-y-2.5 text-sm text-beige">
             {hours.schedule.map((row) => (
               <li key={row.label}>
@@ -65,7 +68,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">Contacto</p>
+          <p className="mt-6 text-[0.7rem] uppercase tracking-[0.3em] text-aka-soft">{site.ui.contact}</p>
           <address className="mt-4 space-y-1 text-sm not-italic text-beige">
             {hours.address.map((line) => (
               <p key={line}>{line}</p>

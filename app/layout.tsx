@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
+import { LangProvider } from "@/components/LangProvider";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -112,7 +113,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <LangProvider>{children}</LangProvider>
       </body>
     </html>
   );

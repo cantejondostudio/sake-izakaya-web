@@ -2,12 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { site } from "@/content/site";
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
 
 export default function Gallery() {
+  const site = useSite();
   const { gallery } = site;
   const items = gallery.items;
   const [open, setOpen] = useState<number | null>(null);

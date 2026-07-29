@@ -1,8 +1,11 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 
 export default function CraftSection() {
+  const site = useSite();
   const { craft } = site;
   return (
     <section id="cocina" className="scroll-mt-20 px-6 py-28 md:py-36">

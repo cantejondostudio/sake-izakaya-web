@@ -1,9 +1,12 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
 
 export default function ExperienceSection() {
+  const site = useSite();
   const { experience } = site;
   return (
     <section id="experiencia" className="texture-paper scroll-mt-20 bg-wood/40 px-6 py-28 md:py-36">

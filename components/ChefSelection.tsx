@@ -1,9 +1,12 @@
-import { site } from "@/content/site";
+"use client";
+
+import { useSite } from "@/components/LangProvider";
 import Reveal from "./ui/Reveal";
 import SectionHeading from "./ui/SectionHeading";
 import ImagePlaceholder from "./ui/ImagePlaceholder";
 
 export default function ChefSelection() {
+  const site = useSite();
   const { chefSelection } = site;
   return (
     <section id="seleccion" className="texture-paper scroll-mt-20 bg-ink px-6 py-28 md:py-36">

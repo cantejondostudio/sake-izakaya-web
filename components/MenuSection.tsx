@@ -1,10 +1,11 @@
 "use client";
 
-import { site } from "@/content/site";
+import { useSite } from "@/components/LangProvider";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
 
 export default function MenuSection() {
+  const site = useSite();
   const { menu } = site;
 
   return (
