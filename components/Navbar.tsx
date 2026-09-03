@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
 
 export default function Navbar() {
-  const { site, lang, toggle } = useLang();
+  const { site, lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>("inicio");
@@ -84,16 +84,31 @@ export default function Navbar() {
               </a>
             );
           })}
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
-            className="text-[0.72rem] uppercase tracking-[0.22em] text-beige transition-colors duration-300 hover:text-cream"
-          >
-            <span className={lang === "es" ? "text-aka-soft" : ""}>ES</span>
+          <div className="flex items-center text-[0.72rem] uppercase tracking-[0.22em] text-beige">
+            <a
+              href="/"
+              aria-label="Ver la web en español"
+              className={
+                lang === "es"
+                  ? "text-aka-soft"
+                  : "transition-colors duration-300 hover:text-cream"
+              }
+            >
+              ES
+            </a>
             <span className="mx-1 text-beige/40">/</span>
-            <span className={lang === "en" ? "text-aka-soft" : ""}>EN</span>
-          </button>
+            <a
+              href="/en"
+              aria-label="View the site in English"
+              className={
+                lang === "en"
+                  ? "text-aka-soft"
+                  : "transition-colors duration-300 hover:text-cream"
+              }
+            >
+              EN
+            </a>
+          </div>
           <a
             href="#reservar"
             className="border border-aka bg-aka/90 px-5 py-2.5 text-[0.72rem] uppercase tracking-[0.22em] text-cream transition-all duration-300 hover:bg-transparent hover:text-aka-soft"
@@ -150,16 +165,15 @@ export default function Navbar() {
               >
                 {site.hero.ctaPrimary}
               </a>
-              <button
-                type="button"
-                onClick={toggle}
-                aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
-                className="mt-2 py-2.5 text-center text-sm uppercase tracking-[0.22em] text-beige"
-              >
-                <span className={lang === "es" ? "text-aka-soft" : ""}>ES</span>
+              <div className="mt-2 py-2.5 text-center text-sm uppercase tracking-[0.22em] text-beige">
+                <a href="/" className={lang === "es" ? "text-aka-soft" : "hover:text-cream"}>
+                  ES
+                </a>
                 <span className="mx-1.5 text-beige/40">/</span>
-                <span className={lang === "en" ? "text-aka-soft" : ""}>EN</span>
-              </button>
+                <a href="/en" className={lang === "en" ? "text-aka-soft" : "hover:text-cream"}>
+                  EN
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

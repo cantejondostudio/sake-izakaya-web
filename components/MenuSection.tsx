@@ -13,14 +13,11 @@ export default function MenuSection() {
       <div className="mx-auto max-w-3xl">
         <SectionHeading kicker={menu.kicker} title={menu.title} align="center" />
 
-        {/* Subtítulo: japonés + temporada */}
+        {/* Subtítulo japonés */}
         <Reveal delay={0.05}>
-          <div className="mt-4 flex flex-col items-center gap-2 text-center">
-            <p className="font-jp text-lg text-aka-soft" aria-hidden="true">
-              {menu.jp}
-            </p>
-            <p className="text-[0.7rem] uppercase tracking-[0.3em] text-beige-dim">{menu.season}</p>
-          </div>
+          <p className="mt-4 text-center font-jp text-lg text-aka-soft" aria-hidden="true">
+            {menu.jp}
+          </p>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -29,49 +26,62 @@ export default function MenuSection() {
           </p>
         </Reveal>
 
-        {/* Los pases del omakase, en orden */}
-        <ol className="mt-14 divide-y divide-beige/10 border-y border-beige/10">
-          {menu.courses.map((c, i) => (
-            <Reveal key={c.romaji} delay={0.04 * (i % 8)}>
-              <li className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-5 py-5 sm:grid-cols-[9rem_1fr]">
-                {/* Pase: kanji + romaji */}
-                <div className="flex items-baseline gap-3">
+        {/* Secciones de la carta */}
+        <div className="mt-16 space-y-14">
+          {menu.categories.map((cat, ci) => (
+            <Reveal key={cat.name} delay={0.03 * (ci % 5)}>
+              <div>
+                {/* Cabecera de sección: kanji + romaji + traducción */}
+                <div className="flex items-baseline gap-3 border-b border-beige/15 pb-3">
                   <span className="font-jp text-xl leading-none text-aka-soft" aria-hidden="true">
-                    {c.jp}
+                    {cat.jp}
                   </span>
-                  <span className="hidden font-serif text-lg text-cream sm:inline">{c.romaji}</span>
+                  <h3 className="font-serif text-2xl text-cream">{cat.name}</h3>
+                  <span className="text-[0.68rem] uppercase tracking-[0.22em] text-beige-dim">
+                    {cat.tag}
+                  </span>
                 </div>
-                {/* Plato + rol */}
-                <div className="min-w-0">
-                  <p className="font-serif text-lg leading-snug text-cream">{c.dish}</p>
-                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-beige-dim">
-                    <span className="sm:hidden">{c.romaji} · </span>
-                    {c.role}
-                  </p>
-                </div>
-              </li>
+
+                {/* Platos */}
+                <ul className="mt-5 space-y-4">
+                  {cat.items.map((item) => (
+                    <li
+                      key={item.name}
+                      className="flex items-baseline gap-4"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="font-serif text-lg leading-snug text-cream">
+                          {item.name}
+                        </p>
+                        <p className="mt-0.5 text-sm leading-snug text-beige-dim">
+                          {item.desc}
+                        </p>
+                      </div>
+                      {/* Línea de puntos + precio */}
+                      <span
+                        className="mb-1 hidden flex-1 self-end border-b border-dotted border-beige/20 sm:block"
+                        aria-hidden="true"
+                      />
+                      <span className="shrink-0 whitespace-nowrap font-serif text-lg text-aka-soft">
+                        {item.price}
+                        {/^[0-9]/.test(item.price) ? " €" : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
           ))}
-        </ol>
+        </div>
 
-        {/* Precio, condiciones y llamada a reservar */}
-        <Reveal className="mt-12 flex flex-col items-center gap-6 text-center">
-          <div>
-            <span className="font-serif text-5xl text-cream">
-              {menu.price} {menu.currency}
-            </span>
-            <p className="mt-1 text-[0.7rem] uppercase tracking-[0.25em] text-beige-dim">
-              {menu.priceUnit}
-            </p>
-          </div>
-          <ul className="space-y-1.5 text-[0.72rem] uppercase tracking-[0.16em] text-beige-dim/70">
-            {menu.conditions.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
+        {/* Nota + llamada a reservar */}
+        <Reveal className="mt-14 flex flex-col items-center gap-6 text-center">
+          <p className="max-w-lg text-[0.72rem] uppercase tracking-[0.16em] text-beige-dim/70">
+            {menu.note}
+          </p>
           <a
             href="#reservar"
-            className="mt-1 bg-aka px-9 py-3.5 text-[0.72rem] uppercase tracking-[0.25em] text-cream transition-opacity duration-300 hover:opacity-90"
+            className="bg-aka px-9 py-3.5 text-[0.72rem] uppercase tracking-[0.25em] text-cream transition-opacity duration-300 hover:opacity-90"
           >
             {menu.cta}
           </a>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
-import { LangProvider } from "@/components/LangProvider";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -24,43 +23,12 @@ const notoSerifJp = Noto_Serif_JP({
   preload: false,
 });
 
+/* Metadatos COMUNES a ambos idiomas. Los específicos (título, descripción,
+   OpenGraph, canonical + hreflang) se definen en cada página: app/page.tsx (es)
+   y app/en/page.tsx (en). */
 export const metadata: Metadata = {
   metadataBase: new URL("https://sakeizakaya.es"),
-  title: site.seo.title,
-  description: site.seo.description,
-  keywords: [
-    "Sake Izakaya",
-    "izakaya Málaga",
-    "restaurante japonés Málaga",
-    "sake",
-    "sashimi Málaga",
-    "omakase Málaga",
-    "reservar restaurante japonés Málaga",
-  ],
-  alternates: { canonical: "/" },
   applicationName: "Sake Izakaya",
-  openGraph: {
-    title: site.seo.title,
-    description: site.seo.description,
-    url: "/",
-    siteName: "Sake Izakaya",
-    type: "website",
-    locale: "es_ES",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sake Izakaya · Izakaya japonés en el Centro de Málaga",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.seo.title,
-    description: site.seo.description,
-    images: ["/og.jpg"],
-  },
   robots: { index: true, follow: true },
   verification: { google: "RtFKDMypx--1iYqukBttjP4WOV0MucK0chKybKQAMcI" },
 };
@@ -113,7 +81,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LangProvider>{children}</LangProvider>
+        {children}
       </body>
     </html>
   );
