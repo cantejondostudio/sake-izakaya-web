@@ -126,7 +126,7 @@ const es = {
       { label: "Comida", value: "13:30 – 16:30" },
       { label: "Cena", value: "20:00 – 00:00" },
     ],
-    scheduleNote: "Abierto de martes a domingo. Lunes, cerrado.",
+    scheduleNote: "Abierto de martes a sábado. Domingo y lunes, cerrado.",
     address: ["C. San Juan de Letrán 4", "29012 Málaga"],
     phone: "+34 611 45 04 45",
     email: "[PENDIENTE]",
@@ -153,7 +153,7 @@ const es = {
       { label: "Comida", slots: ["13:30", "14:00", "14:30", "15:00", "15:30", "16:00"] },
       { label: "Cena", slots: ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"] },
     ],
-    closedWeekdays: [1] as number[],
+    closedWeekdays: [0, 1] as number[],
   },
 
   menu: {
@@ -424,7 +424,7 @@ const en: typeof es = {
       { label: "Lunch", value: "13:30 – 16:30" },
       { label: "Dinner", value: "20:00 – 00:00" },
     ],
-    scheduleNote: "Open Tuesday to Sunday. Closed on Mondays.",
+    scheduleNote: "Open Tuesday to Saturday. Closed Sunday and Monday.",
     address: ["C. San Juan de Letrán 4", "29012 Málaga"],
     phone: "+34 611 45 04 45",
     email: "[PENDIENTE]",
@@ -451,7 +451,7 @@ const en: typeof es = {
       { label: "Lunch", slots: ["13:30", "14:00", "14:30", "15:00", "15:30", "16:00"] },
       { label: "Dinner", slots: ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"] },
     ],
-    closedWeekdays: [1] as number[],
+    closedWeekdays: [0, 1] as number[],
   },
 
   menu: {
