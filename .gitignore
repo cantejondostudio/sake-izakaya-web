@@ -26,6 +26,8 @@
 # misc
 .DS_Store
 *.pem
+# macOS AppleDouble (discos externos exFAT/NTFS)
+._*
 
 # debug
 npm-debug.log*
