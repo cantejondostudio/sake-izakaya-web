@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sake · Japón sin salir de Málaga · Izakaya en Málaga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Jost:wght@400;500&amp;family=Noto+Serif+JP:wght@400;600&amp;family=Space+Grotesk:wght@700&amp;family=IBM+Plex+Mono:wght@600&amp;family=Zen+Kaku+Gothic+New:wght@900&amp;display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#14110e;color:#f7f1e5;font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}a{color:#e7d9bf;text-decoration:none;cursor:pointer}a:hover{color:#c2402f}::selection{background:#a63325;color:#f7f1e5}input,select,textarea,button{font-family:'Jost',sans-serif}input[type=date]{color-scheme:dark}@keyframes lbIn{from{opacity:0}to{opacity:1}}@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
+</helmet>
+<div style="min-height:100vh;background:#14110e;color:#f7f1e5;position:relative;overflow-x:hidden">
+
+<div data-nofx="1" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px clamp(20px,4vw,56px);background:{{ hdrBg }};border-bottom:1px solid {{ hdrLine }};transition:background .4s">
+<a onClick="{{ goHome }}" style="display:flex"><img src="uploads/sake-izakaya-web/public/brand/logo-cream.png" alt="Sake Izakaya" style="height:clamp(40px,4vw,54px)"></a>
+<sc-if value="{{ deskHdr }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:clamp(16px,2vw,36px);font:500 13px 'Jost';letter-spacing:.18em;text-transform:uppercase">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="4"><a onClick="{{ n.go }}" style="color:{{ n.color }};border-bottom:1px solid {{ n.line }};padding-bottom:4px">{{ n.label }}</a></sc-for>
+<a onClick="{{ goJlab }}" aria-label="J.L.ab" style="display:flex;align-items:center;gap:10px;color:{{ jlabNav.color }};border-bottom:1px solid {{ jlabNav.line }};padding-bottom:4px"><span aria-hidden="true" style="flex:0 0 auto;width:32px;height:36px;border:2px solid currentColor;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Space Grotesk';letter-spacing:-.06em;text-transform:none">JL</span><span style="text-transform:none;letter-spacing:.06em">J.L.ab</span></a>
+<a onClick="{{ toggleLang }}" style="font:500 12px 'Jost';letter-spacing:.2em;color:#b3a284">{{ t.otherLang }}</a>
+<div style="display:flex;align-items:center;gap:14px;padding-left:clamp(12px,1.6vw,28px);border-left:1px solid rgba(231,217,191,.2)">
+<a href="{{ waLink }}" target="_blank" aria-label="WhatsApp" style="display:flex;color:#e7d9bf"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg></a>
+<a href="tel:+34611450445" style="font:500 13px 'Jost';letter-spacing:.06em;color:#e7d9bf;text-transform:none;white-space:nowrap">+34 611 45 04 45</a>
+<a onClick="{{ openRes }}" style="background:#a63325;color:#f7f1e5;padding:14px 28px">{{ t.nav.book }}</a>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ mobHdr }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:18px"><a href="{{ waLink }}" target="_blank" aria-label="WhatsApp" style="display:flex;color:#e7d9bf"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg></a><a onClick="{{ toggleLang }}" style="font:500 12px 'Jost';letter-spacing:.2em;color:#b3a284">{{ t.otherLang }}</a><a onClick="{{ toggleMenu }}" style="font:500 12px 'Jost';letter-spacing:.25em;color:#f7f1e5">{{ menuLabel }}</a></div>
+</sc-if>
+</div>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:45;background:#0c0a08;padding:120px 24px 40px;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="4"><a onClick="{{ n.go }}" style="font:400 44px/1.2 'Cormorant Garamond';color:#f7f1e5;border-bottom:1px solid rgba(231,217,191,.12);padding:10px 0">{{ n.label }}</a></sc-for>
+<a onClick="{{ goJlab }}" style="display:flex;align-items:center;gap:16px;font:400 44px/1.2 'Cormorant Garamond';color:#f7f1e5;border-bottom:1px solid rgba(231,217,191,.12);padding:10px 0"><span aria-hidden="true" style="flex:0 0 auto;width:56px;height:62px;border:2px solid currentColor;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:700 26px/1 'Space Grotesk';letter-spacing:-.06em">J<span style="color:#e2553c">.</span>L</span>J.L.ab</a>
+<span style="margin-top:auto;font:400 14px/1.6 'Jost';color:#b3a284">{{ t.res.addr1 }}, {{ t.res.addr2 }} · {{ t.res.phone }}</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+<div style="height:100vh;min-height:620px;position:relative;overflow:hidden">
+<video data-par="0.18" data-sc="1.12" ref="{{ vref }}" poster="uploads/sake-izakaya-web/public/video/hero-poster.jpg" aria-label="{{ t.hero.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><source src="uploads/sake-izakaya-web/public/video/hero.mp4" type="video/mp4"></video>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,10,8,.9) 0%,rgba(12,10,8,.55) 50%,rgba(12,10,8,.2) 100%)"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(0deg,#14110e 0%,rgba(20,17,14,.85) 14%,rgba(12,10,8,0) 50%)"></div>
+<div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(110px,10vh,120px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px">
+<div data-reveal="1" style="display:flex;flex-direction:column;gap:clamp(16px,2.4vw,28px);max-width:680px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px"><span style="font:500 12px 'Jost';letter-spacing:.35em;text-transform:uppercase;color:#e7d9bf">{{ t.hero.kicker }}</span></div>
+<h1 style="margin:0;font:400 clamp(54px,8.4vw,120px)/0.92 'Cormorant Garamond';letter-spacing:-.01em;text-wrap:balance">{{ t.hero.title }}</h1>
+<p style="margin:0;font:400 clamp(15px,1.4vw,19px)/1.6 'Jost';color:#e7d9bf;max-width:560px;text-wrap:pretty">{{ t.hero.text }}</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px">
+<a onClick="{{ openRes }}" style="background:#a63325;color:#f7f1e5;padding:18px 34px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase">{{ t.hero.cta1 }}</a>
+<a onClick="{{ goCarta }}" style="border:1px solid rgba(231,217,191,.5);color:#e7d9bf;padding:17px 34px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase">{{ t.hero.cta2 }}</a>
+</div>
+</div>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;font:400 14px/1.6 'Jost';color:#e7d9bf;text-align:right">
+<span style="font:400 34px 'Noto Serif JP';writing-mode:vertical-rl;letter-spacing:.2em;margin-bottom:20px">マラガの居酒屋</span>
+<span>{{ t.hero.days }}</span><span>{{ t.hero.hours }}</span>
+<span style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(231,217,191,.3);font:italic 400 22px 'Cormorant Garamond';color:#f7f1e5">{{ t.hero.award }}</span>
+</div>
+</sc-if>
+<sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:14px;border-top:1px solid rgba(231,217,191,.3);font:400 13px/1.5 'Jost';color:#e7d9bf"><span style="font:italic 400 19px 'Cormorant Garamond';color:#f7f1e5">{{ t.hero.award }}</span><span>{{ t.hero.days }} · {{ t.hero.hours }}</span></div>
+</sc-if>
+</div>
+</div>
+
+<div id="s-que" style="position:relative;isolation:isolate;overflow:hidden;min-height:100vh;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:40px 56px;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);align-items:center">
+
+<div data-reveal="1" style="flex:0 1 620px;min-width:0;display:flex;flex-direction:column;gap:28px">
+<h2 style="margin:0"><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px"><span style="font:600 clamp(56px,7vw,104px)/1 'Noto Serif JP';letter-spacing:.06em">居酒屋</span><span style="font:italic 400 clamp(26px,2.6vw,38px) 'Cormorant Garamond';color:#c2402f">izakaya</span></div><p style="margin:0;font:400 15px/1.6 'Jost';color:#e7d9bf;max-width:420px;text-wrap:pretty">{{ t.que.def }}</p></div></h2>
+<p style="margin:0;font:400 clamp(15px,1.3vw,18px)/1.7 'Jost';color:#e7d9bf;text-wrap:pretty">{{ t.que.text }}</p>
+<p style="margin:0;font:italic 400 clamp(24px,2.4vw,34px)/1.25 'Cormorant Garamond';color:#f7f1e5">{{ t.que.coda }}</p>
+</div>
+<img data-par="0.12" src="uploads/sake-izakaya-web/public/gallery/sake-026.jpg" alt="{{ t.que.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2">
+<div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,17,14,.96) 0%,rgba(20,17,14,.75) 45%,rgba(20,17,14,.1) 100%),linear-gradient(0deg,#14110e,rgba(20,17,14,0) 22%),linear-gradient(180deg,#14110e,rgba(20,17,14,0) 22%)"></div>
+</div>
+
+<div id="s-juan" style="display:flex;flex-wrap:wrap;min-height:100vh;background:#14110e">
+<div style="flex:1.15 1 460px;min-width:0;position:relative;overflow:hidden;min-height:clamp(480px,70vh,100vh)">
+<img data-par="0.1" src="uploads/sake-izakaya-web/public/gallery/sake-005.jpg" alt="Juan López Ramos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 30%">
+<div style="position:absolute;inset:0;background:linear-gradient(270deg,#14110e 0%,rgba(20,17,14,0) 28%),linear-gradient(0deg,rgba(20,17,14,.5),rgba(20,17,14,0) 30%)"></div>
+</div>
+<div data-reveal="1" style="flex:1 1 440px;min-width:0;box-sizing:border-box;padding:clamp(56px,8vw,120px) clamp(20px,5vw,80px);display:flex;flex-direction:column;justify-content:center;gap:28px">
+<div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px"><span style="font:600 clamp(56px,7vw,104px)/1 'Noto Serif JP';letter-spacing:.06em">大将</span><span style="font:italic 400 clamp(26px,2.6vw,38px) 'Cormorant Garamond';color:#e0644f">taishō</span></div></div>
+<h2 style="margin:0;font:400 clamp(34px,3.6vw,52px)/1.05 'Cormorant Garamond';text-wrap:balance;max-width:560px">{{ t.juan.title }}</h2>
+<p style="margin:0;font:400 clamp(15px,1.2vw,17px)/1.7 'Jost';color:#e7d9bf;text-wrap:pretty;max-width:520px">{{ t.juan.p1 }}</p>
+<p style="margin:0;font:400 clamp(15px,1.2vw,17px)/1.7 'Jost';color:#e7d9bf;text-wrap:pretty;max-width:520px">{{ t.juan.p2 }}</p>
+<div style="border-top:1px solid rgba(231,217,191,.18);padding-top:20px;margin-top:6px;max-width:520px"><img src="assets/firma-juan.png" alt="Firma de Juan López Ramos" style="display:block;width:min(340px,85%);height:auto"></div>
+</div>
+</div>
+
+<div id="s-otoshi" style="position:relative;isolation:isolate;overflow:hidden;min-height:100vh;box-sizing:border-box;display:flex;align-items:center;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px)">
+<img data-par="0.12" src="uploads/sake-izakaya-web/public/gallery/sake-013.jpg" alt="{{ t.otoshi.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;z-index:-2">
+<div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,17,14,.95) 0%,rgba(20,17,14,.82) 40%,rgba(20,17,14,.15) 80%),linear-gradient(0deg,#14110e,rgba(20,17,14,0) 22%),linear-gradient(180deg,#14110e,rgba(20,17,14,0) 22%)"></div>
+<div data-reveal="1" style="flex:0 1 600px;min-width:0;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px"><span style="font:600 clamp(56px,7vw,104px)/1 'Noto Serif JP';letter-spacing:.06em">お通し</span><span style="font:italic 400 clamp(26px,2.6vw,38px) 'Cormorant Garamond';color:#e0644f">otōshi</span></div><p style="margin:0;font:400 15px/1.6 'Jost';color:#e7d9bf;max-width:420px;text-wrap:pretty">{{ t.otoshi.def }}</p></div>
+<h2 style="margin:0;font:400 clamp(34px,3.6vw,52px)/1.05 'Cormorant Garamond';text-wrap:balance">{{ t.otoshi.title }}</h2>
+<p style="margin:0;font:400 clamp(15px,1.3vw,18px)/1.7 'Jost';color:#e7d9bf;max-width:540px;text-wrap:pretty">{{ t.otoshi.text }}</p>
+</div>
+</div>
+
+<div style="position:relative;isolation:isolate;overflow:hidden;min-height:100vh;display:flex;align-items:center;justify-content:flex-end;padding:clamp(80px,10vw,120px) clamp(20px,4vw,56px);box-sizing:border-box;background:#221810">
+<img data-par="0.12" src="uploads/sake-izakaya-web/public/gallery/sake-018.jpg" alt="{{ t.beber.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 40%;z-index:-2">
+<div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(270deg,rgba(20,17,14,.95) 0%,rgba(20,17,14,.88) 55%,rgba(20,17,14,.3) 85%,rgba(20,17,14,.1) 100%),linear-gradient(0deg,#14110e,rgba(20,17,14,0) 20%),linear-gradient(180deg,#14110e,rgba(20,17,14,0) 20%)"></div>
+<div data-reveal="1" style="flex:0 1 560px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column;gap:28px">
+
+<div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px"><span style="font:600 clamp(56px,7vw,104px)/1 'Noto Serif JP';letter-spacing:.06em">枡酒</span><span style="font:italic 400 clamp(26px,2.6vw,38px) 'Cormorant Garamond';color:#e0644f">masuzake</span></div><p style="margin:0;font:400 15px/1.6 'Jost';color:#e7d9bf;max-width:420px;text-wrap:pretty">{{ t.beber.def }}</p></div>
+<h2 style="margin:0;font:400 clamp(32px,3.2vw,46px)/1.05 'Cormorant Garamond'">{{ t.beber.title }}</h2>
+<p style="margin:0;font:400 17px/1.65 'Jost';color:#e7d9bf">{{ t.beber.intro }}</p>
+<div style="display:flex;flex-direction:column">
+<div style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284;padding-bottom:12px;display:flex;gap:12px"><span>{{ t.beber.sakeHead }}</span><span style="font:400 13px 'Noto Serif JP';letter-spacing:.1em">日本酒</span></div>
+<sc-for list="{{ sakes }}" as="s" hint-placeholder-count="6"><div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid rgba(231,217,191,.14);font:400 20px 'Cormorant Garamond'"><span>{{ s.name }}</span><span style="font:400 15px 'Jost';color:#b3a284">{{ s.price }}</span></div></sc-for>
+</div>
+<a onClick="{{ goBebidas }}" style="font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase;border-bottom:1px solid #a63325;padding-bottom:6px;align-self:flex-start">{{ t.beber.cta }} →</a>
+</div>
+</div>
+
+<div id="s-come" style="padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) clamp(60px,8vw,120px);display:flex;flex-direction:column;gap:48px">
+<div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-end">
+
+<div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px"><span style="font:600 clamp(56px,7vw,104px)/1 'Noto Serif JP';letter-spacing:.06em">取り分け</span><span style="font:italic 400 clamp(26px,2.6vw,38px) 'Cormorant Garamond';color:#c2402f">toriwake</span></div>
+<h2 style="margin:0;font:400 clamp(34px,3.6vw,52px)/1.05 'Cormorant Garamond';text-wrap:balance">{{ t.come.title }}</h2>
+</div>
+<p style="flex:0 1 360px;margin:0;font:400 clamp(15px,1.3vw,18px)/1.65 'Jost';color:#e7d9bf;text-wrap:pretty">{{ t.come.intro }}</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+<sc-for list="{{ carta }}" as="c" hint-placeholder-count="5">
+<a onClick="{{ goCarta }}" data-reveal="1" style="background:#14110e;display:flex;flex-direction:column;color:#f7f1e5">
+<img src="{{ c.img }}" alt="{{ c.tag }}" style="width:100%;height:300px;object-fit:cover">
+<div style="padding:24px 22px 28px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:italic 400 18px 'Cormorant Garamond';color:#c2402f">{{ c.n }}</span><span style="font:400 22px 'Noto Serif JP';color:#e7d9bf">{{ c.jp }}</span></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:400 30px/1 'Cormorant Garamond'">{{ c.name }}</span><span style="font:500 11px 'Jost';letter-spacing:.25em;text-transform:uppercase;color:#b3a284">{{ c.tag }}</span></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(231,217,191,.15);padding-top:14px">
+<sc-for list="{{ c.top }}" as="it" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:10px;font:400 14px/1.35 'Jost';color:#e7d9bf"><span>{{ it.name }}</span><span style="color:#b3a284;white-space:nowrap">{{ it.price }}</span></div></sc-for>
+</div>
+</div>
+</a>
+</sc-for>
+</div>
+<div data-reveal="1" style="border:1px solid #a63325;background:linear-gradient(135deg,rgba(166,51,37,.14),rgba(166,51,37,0) 60%);padding:clamp(28px,4vw,56px);display:flex;flex-wrap:wrap;gap:36px clamp(40px,6vw,96px)">
+<div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#e0644f">{{ t.deg.kicker }}</span>
+<span style="font:400 clamp(40px,4.4vw,64px)/1 'Cormorant Garamond'">{{ t.deg.name }}</span>
+<span style="font:400 clamp(44px,4.6vw,68px)/1 'Cormorant Garamond';color:#e7d9bf">{{ t.deg.price }}</span>
+<span style="font:400 14px/1.5 'Jost';color:#e7d9bf;border-top:1px solid rgba(231,217,191,.2);padding-top:14px">{{ t.deg.cond }}</span>
+</div>
+<div style="flex:2 1 460px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 40px;align-content:start">
+<sc-for list="{{ degust }}" as="d" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:6px;padding:16px 0;border-top:1px solid rgba(231,217,191,.14)"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ d.h }}</span><span style="font:400 20px/1.35 'Cormorant Garamond';color:#f7f1e5">{{ d.items }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font:400 14px 'Jost';color:#b3a284"><span>{{ t.carta.note }}</span><a onClick="{{ goCarta }}" style="font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase;border-bottom:1px solid #a63325;padding-bottom:6px">{{ t.come.cta }} →</a></div>
+</div>
+
+<div id="s-casa" style="padding:clamp(40px,6vw,80px) 0 clamp(80px,10vw,140px);display:flex;flex-direction:column;gap:clamp(56px,8vw,120px)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:6px;align-items:stretch">
+<sc-for list="{{ casa }}" as="ti" hint-placeholder-count="3">
+<div data-reveal="1" style="position:relative;overflow:hidden;height:clamp(520px,82vh,860px)">
+<img src="{{ ti.img }}" alt="{{ ti.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.04)">
+<div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,10,8,.9) 0%,rgba(12,10,8,.35) 32%,rgba(12,10,8,0) 55%)"></div>
+<span style="position:absolute;right:clamp(16px,2vw,28px);top:clamp(16px,2vw,28px);writing-mode:vertical-rl;font:400 clamp(18px,1.6vw,24px) 'Noto Serif JP';letter-spacing:.25em;color:#f7f1e5">{{ ti.jp }}</span>
+<div style="position:absolute;left:clamp(20px,2.6vw,40px);right:clamp(20px,2.6vw,40px);bottom:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:10px">
+<span style="font:400 clamp(32px,3vw,44px)/1 'Cormorant Garamond'">{{ ti.title }}</span>
+<span style="font:400 15px/1.55 'Jost';color:#e7d9bf;max-width:380px;text-wrap:pretty">{{ ti.desc }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="position:relative;height:100vh;min-height:520px;overflow:hidden;background:#0c0a08">
+<div ref="{{ galRef }}" onScroll="{{ galScroll }}" style="display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none">
+<sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8"><div style="flex:0 0 100%;height:100%;scroll-snap-align:start;position:relative"><img data-nofx="1" src="{{ g.src }}" alt="{{ g.label }}" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div></sc-for>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(12,10,8,.85) 0%,rgba(12,10,8,0) 32%),linear-gradient(180deg,#14110e 0%,rgba(20,17,14,0) 14%)"></div>
+<div style="position:absolute;left:clamp(20px,4vw,56px);bottom:clamp(28px,5vw,56px);display:flex;align-items:baseline;gap:16px;pointer-events:none"><span style="font:400 clamp(22px,2vw,30px) 'Noto Serif JP';color:#c2402f">{{ galCur.kanji }}</span><span style="font:italic 400 clamp(22px,2.2vw,32px) 'Cormorant Garamond';color:#f7f1e5">{{ galCur.label }}</span></div>
+<div style="position:absolute;right:clamp(20px,4vw,56px);bottom:clamp(24px,5vw,52px);display:flex;align-items:center;gap:14px">
+<span style="font:500 12px 'Jost';letter-spacing:.25em;color:#e7d9bf;margin-right:8px">{{ galCount }}</span>
+<a onClick="{{ galPrev }}" aria-label="Anterior" style="width:56px;height:56px;border:1px solid rgba(231,217,191,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 20px 'Jost';color:#f7f1e5;background:rgba(12,10,8,.3)" style-hover="background:#a63325;border-color:#a63325">←</a>
+<a onClick="{{ galNext }}" aria-label="Siguiente" style="width:56px;height:56px;border:1px solid rgba(231,217,191,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 20px 'Jost';color:#f7f1e5;background:rgba(12,10,8,.3)" style-hover="background:#a63325;border-color:#a63325">→</a>
+</div>
+</div>
+</div>
+
+<div style="padding:0 clamp(20px,4vw,56px) clamp(80px,10vw,140px);display:flex;flex-wrap:wrap;gap:24px 56px">
+
+<div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:32px">
+<h2 data-reveal="1" style="margin:0;font:400 clamp(34px,4.4vw,64px)/1.05 'Cormorant Garamond';text-wrap:balance;overflow-wrap:break-word">{{ t.dicen.title }}</h2>
+<div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,5vw,72px);align-items:center;border-top:1px solid rgba(231,217,191,.3);border-bottom:1px solid rgba(231,217,191,.3);padding:clamp(36px,5vw,72px) 0">
+<div style="display:flex;align-items:flex-start;color:#e7d9bf"><span style="font:italic 400 clamp(40px,5vw,72px)/1 'Cormorant Garamond';color:#c2402f;margin-top:clamp(14px,2vw,28px)">Nº</span><span style="font:400 clamp(170px,20vw,300px)/0.78 'Cormorant Garamond'">1</span></div>
+<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:32px">
+<div style="font:400 clamp(28px,3.4vw,48px)/1.1 'Cormorant Garamond';text-wrap:pretty">{{ t.dicen.ofN }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px 56px">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 clamp(48px,5vw,76px)/1 'Cormorant Garamond'">4,8</span><span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ t.dicen.ta }}</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 clamp(48px,5vw,76px)/1 'Cormorant Garamond'">4,7</span><span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ t.dicen.g }}</span></div>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px">
+<sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3"><div style="border-top:1px solid rgba(231,217,191,.3);padding:28px 0 0;display:flex;flex-direction:column;justify-content:space-between;gap:24px"><div style="display:flex;flex-direction:column;gap:10px"><span style="font:italic 400 21px/1.45 'Cormorant Garamond';color:#f7f1e5;text-wrap:pretty">{{ q.text }}</span><sc-if value="{{ q.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font:400 12px 'Jost';color:#b3a284">{{ q.note }}</span></sc-if></div><div style="display:flex;justify-content:space-between;gap:12px;font:400 13px 'Jost';color:#b3a284;border-top:1px solid rgba(231,217,191,.15);padding-top:12px"><span>{{ q.who }}</span><span style="letter-spacing:.2em;text-transform:uppercase;font-size:11px">{{ q.src }}</span></div></div></sc-for>
+</div>
+</div>
+</div>
+
+<div id="s-grupos" style="display:flex;flex-wrap:wrap;border-top:1px solid rgba(231,217,191,.12)">
+<div style="flex:1.4 1 520px;min-width:0;position:relative;min-height:620px;overflow:hidden">
+<img data-par="0.1" src="uploads/sake-izakaya-web/public/gallery/sake-021.jpg" alt="{{ t.grupos.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+<div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,10,8,.92) 30%,rgba(12,10,8,0) 75%)"></div>
+<div data-reveal="1" style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:20px">
+
+<h2 style="margin:0;font:400 clamp(36px,4vw,56px)/1 'Cormorant Garamond'">{{ t.grupos.title }}</h2>
+<div style="display:flex;flex-wrap:wrap;gap:16px 40px">
+<sc-for list="{{ menus }}" as="mm" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:400 15px 'Noto Serif JP';color:#e7d9bf">{{ mm.jp }}</span><span style="font:400 30px 'Cormorant Garamond'">{{ mm.name }} · {{ mm.price }} €</span></div></sc-for>
+</div>
+<span style="font:400 14px/1.5 'Jost';color:#e7d9bf">{{ t.grupos.cond }}</span>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px"><a href="{{ waGrupos }}" target="_blank" style="display:flex;align-items:center;gap:10px;background:#a63325;color:#f7f1e5;padding:16px 28px;font:500 13px 'Jost';letter-spacing:.22em;text-transform:uppercase"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>WhatsApp</a><a onClick="{{ goGrupos }}" style="font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase;border-bottom:1px solid #a63325;padding-bottom:6px">{{ t.grupos.cta }} →</a></div>
+</div>
+</div>
+<div data-reveal="1" style="flex:1 1 380px;min-width:0;box-sizing:border-box;background:#221810;padding:clamp(40px,4vw,56px) clamp(20px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+<div style="display:flex;flex-direction:column;gap:20px">
+
+<h2 style="margin:0;font:400 clamp(34px,3.4vw,48px)/1.02 'Cormorant Garamond'">{{ t.regalar.title }}</h2>
+<p style="margin:0;font:400 16px/1.6 'Jost';color:#e7d9bf">{{ t.regalar.text }}</p>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ gifts }}" as="gf" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:4px;padding:16px 0;border-top:1px solid rgba(231,217,191,.16)"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font:400 24px/1.15 'Cormorant Garamond'">{{ gf.n }}</span><span style="font:400 24px 'Cormorant Garamond';color:#e7d9bf;white-space:nowrap">{{ gf.p }}</span></div><sc-if value="{{ gf.hasS }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px 'Jost';color:#b3a284">{{ gf.s }}</span></sc-if></div></sc-for>
+</div>
+<p style="margin:0;font:400 14px/1.6 'Jost';color:#b3a284">{{ t.regalar.how }}</p>
+</div>
+<a href="{{ waRegalar }}" target="_blank" style="display:flex;align-items:center;gap:10px;align-self:flex-start;background:#a63325;color:#f7f1e5;padding:16px 28px;font:500 13px 'Jost';letter-spacing:.22em;text-transform:uppercase"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>{{ t.regalar.cta }}</a>
+</div>
+</div>
+
+<div style="background:#0c0a08;padding:clamp(48px,5vw,72px) clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:24px 56px;align-items:center;border-top:1px solid rgba(231,217,191,.08);border-bottom:1px solid rgba(231,217,191,.08)">
+
+<div style="width:88px;height:98px;border:2px solid #e7d9bf;box-sizing:border-box;padding:8px;display:flex;flex-direction:column;justify-content:space-between;color:#e7d9bf"><div style="display:flex;justify-content:space-between"><span style="font:600 9px 'IBM Plex Mono',monospace">01</span><span style="font:900 10px 'Zen Kaku Gothic New';color:#c2402f">実験</span></div><div style="font:700 44px/0.8 'Space Grotesk';letter-spacing:-.06em">J<span style="color:#c2402f">.</span>L</div></div>
+<div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px"><span lang="ja" style="font:600 clamp(30px,3.4vw,48px)/1.1 'Noto Serif JP';letter-spacing:.06em;color:#f7f1e5">一見さんお断り</span><span style="font:italic 400 clamp(20px,2vw,28px) 'Cormorant Garamond';color:#e0644f">ichigen-san okotowari</span></div><span style="font:400 clamp(30px,3vw,44px)/1.1 'Cormorant Garamond';color:#e7d9bf;margin-top:6px">{{ t.jlab.line1 }}</span><span style="font:400 clamp(16px,1.3vw,18px)/1.55 'Jost';color:#e7d9bf;max-width:620px">{{ t.jlab.line2 }}</span><span style="font:400 14px 'Jost';color:#b3a284">{{ t.jlab.line3 }}</span></div>
+</div>
+
+<div id="s-reservar" style="display:flex;flex-wrap:wrap;gap:40px 56px;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px) 80px">
+
+<div data-reveal="1" style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:28px">
+<h2 style="margin:0;font:400 clamp(44px,5vw,72px)/1 'Cormorant Garamond'">{{ t.res.title }}</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;max-width:660px">
+<a onClick="{{ openRes }}" style="display:flex;flex-direction:column;gap:8px;padding:22px 24px;border:1px solid rgba(231,217,191,.4);color:#f7f1e5;transition:background .3s,border-color .3s" style-hover="background:#a63325;border-color:#a63325"><span style="font:500 13px 'Jost';letter-spacing:.22em;text-transform:uppercase">{{ t.res.online }}</span><span style="font:400 13px 'Jost';color:#e7d9bf">CoverManager</span></a>
+<a href="{{ waLink }}" target="_blank" style="display:flex;flex-direction:column;gap:8px;padding:22px 24px;border:1px solid rgba(231,217,191,.4);color:#f7f1e5;transition:background .3s,border-color .3s" style-hover="background:#a63325;border-color:#a63325"><span style="font:500 13px 'Jost';letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:10px"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>WhatsApp</span><span style="font:400 13px 'Jost';color:#e7d9bf">+34 611 45 04 45</span></a>
+<a href="tel:+34611450445" style="display:flex;flex-direction:column;gap:8px;padding:22px 24px;border:1px solid rgba(231,217,191,.4);color:#f7f1e5;transition:background .3s,border-color .3s" style-hover="background:#a63325;border-color:#a63325"><span style="font:500 13px 'Jost';letter-spacing:.22em;text-transform:uppercase">{{ t.call }}</span><span style="font:400 13px 'Jost';color:#e7d9bf">+34 611 45 04 45</span></a>
+</div>
+</div>
+<div data-reveal="1" style="flex:1 1 420px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;font:400 16px/1.6 'Jost';color:#e7d9bf">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ t.res.hoursLbl }}</span><span>{{ t.res.lunch }} 13:30 – 16:30</span><span>{{ t.res.dinner }} 20:00 – 00:00</span><span style="color:#b3a284;font-size:14px">{{ t.res.note }}</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ t.res.addrLbl }}</span><span>{{ t.res.addr1 }}</span><span>{{ t.res.addr2 }}</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Sake+Izakaya+Calle+San+Juan+de+Letr%C3%A1n+M%C3%A1laga" target="_blank" style="border-bottom:1px solid #a63325;align-self:flex-start">{{ t.res.map }} →</a></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ t.res.phoneLbl }}</span><a href="tel:+34611450445">{{ t.res.phone }}</a><a href="{{ waLink }}" target="_blank" style="color:#b3a284;font-size:14px">{{ t.res.wa }}</a></div>
+<div style="font:400 14px/1.6 'Jost';color:#b3a284">{{ t.res.zone }}</div>
+</div>
+<iframe title="Mapa" src="https://maps.google.com/maps?q=Sake%20Izakaya%20Calle%20San%20Juan%20de%20Letr%C3%A1n%20M%C3%A1laga&amp;z=17&amp;ie=UTF8&amp;output=embed" style="flex:1 1 100%;width:100%;height:420px;border:0;filter:grayscale(1) invert(.92) contrast(.9) sepia(.25)" loading="lazy"></iframe>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCarta }}" hint-placeholder-val="{{ false }}">
+<div style="padding-top:88px">
+<div style="display:flex;flex-wrap:wrap;gap:32px 56px;padding:clamp(60px,8vw,110px) clamp(20px,4vw,56px) 64px;align-items:flex-end">
+
+<div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px"><h1 style="margin:0;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;font:400 clamp(52px,6.6vw,96px)/0.95 'Cormorant Garamond'">{{ t.carta.title }}<span style="font:400 clamp(24px,2.4vw,36px) 'Noto Serif JP';color:#c2402f">定番</span></h1><p style="margin:0;font:400 18px/1.65 'Jost';color:#e7d9bf;max-width:720px">{{ t.carta.intro }}</p></div>
+<div style="flex:0 1 380px;font:400 14px/1.6 'Jost';color:#b3a284;border-left:1px solid rgba(231,217,191,.2);padding-left:24px">{{ t.carta.note }}</div>
+</div>
+<div style="position:sticky;top:{{ stickyTop }};z-index:20;display:flex;gap:2px 28px;overflow-x:auto;padding:0 clamp(20px,4vw,56px);background:#14110e;border-top:1px solid rgba(231,217,191,.12);border-bottom:1px solid rgba(231,217,191,.12)">
+<sc-for list="{{ carta }}" as="c" hint-placeholder-count="5"><a onClick="{{ c.jump }}" style="flex:0 0 auto;display:flex;gap:10px;align-items:baseline;padding:20px 0;font:400 22px 'Cormorant Garamond';color:#e7d9bf"><span style="font:italic 400 16px 'Cormorant Garamond';color:#c2402f">{{ c.n }}</span>{{ c.name }}<span style="font:400 15px 'Noto Serif JP';color:#b3a284">{{ c.jp }}</span></a></sc-for>
+<a onClick="{{ jumpBebidas }}" style="flex:0 0 auto;display:flex;gap:10px;align-items:baseline;padding:20px 0;font:400 22px 'Cormorant Garamond';color:#e7d9bf"><span style="font:italic 400 16px 'Cormorant Garamond';color:#c2402f">06</span>{{ t.carta.drinksTab }}</a>
+</div>
+<sc-for list="{{ carta }}" as="c" hint-placeholder-count="5">
+<div id="{{ c.id }}" style="display:flex;flex-wrap:wrap;gap:32px 56px;padding:clamp(56px,7vw,88px) clamp(20px,4vw,56px);border-bottom:1px solid rgba(231,217,191,.1);align-items:flex-start">
+
+<div data-reveal="1" style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px"><h2 style="margin:0;font:400 clamp(44px,4.6vw,64px)/1 'Cormorant Garamond'">{{ c.name }}</h2><span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ c.tag }}</span></div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ c.items }}" as="it" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:18px 0;border-top:1px solid rgba(231,217,191,.14);align-items:baseline"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:400 clamp(22px,2vw,28px)/1.15 'Cormorant Garamond'">{{ it.name }}</span><span style="font:400 15px/1.5 'Jost';color:#b3a284">{{ it.desc }}</span></div><span style="font:400 17px 'Jost';color:#e7d9bf;white-space:nowrap">{{ it.price }}</span></div></sc-for>
+</div>
+<sc-if value="{{ c.hasStar }}" hint-placeholder-val="{{ false }}"><div style="margin-top:16px;border:1px solid #a63325;background:rgba(166,51,37,.14);padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px"><span style="font:500 14px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#f7f1e5">{{ c.star.name }}</span><span style="font:italic 400 22px 'Cormorant Garamond';color:#e0644f">{{ c.star.tag }}</span></div><span style="font:400 17px 'Jost';color:#f7f1e5;white-space:nowrap">{{ c.star.price }}</span></div>
+<span style="font:400 clamp(20px,1.8vw,24px)/1.3 'Cormorant Garamond';color:#f7f1e5">{{ c.star.desc }} · {{ c.star.pax }}</span>
+<span style="font:400 14px/1.5 'Jost';color:#e7d9bf">{{ c.star.when }}</span>
+</div></sc-if>
+</div>
+<img data-reveal="1" src="{{ c.img }}" alt="{{ c.tag }}" style="flex:0 1 420px;min-width:0;width:100%;height:clamp(260px,34vw,520px);object-fit:cover">
+</div>
+</sc-for>
+<div id="c-degustacion" style="padding:clamp(56px,7vw,88px) clamp(20px,4vw,56px)">
+<div data-reveal="1" style="border:1px solid #a63325;background:linear-gradient(135deg,rgba(166,51,37,.14),rgba(166,51,37,0) 60%);padding:clamp(28px,4vw,56px);display:flex;flex-wrap:wrap;gap:36px clamp(40px,6vw,96px)">
+<div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#e0644f">{{ t.deg.kicker }}</span>
+<span style="font:400 clamp(40px,4.4vw,64px)/1 'Cormorant Garamond'">{{ t.deg.name }}</span>
+<span style="font:400 clamp(44px,4.6vw,68px)/1 'Cormorant Garamond';color:#e7d9bf">{{ t.deg.price }}</span>
+<span style="font:400 14px/1.5 'Jost';color:#e7d9bf;border-top:1px solid rgba(231,217,191,.2);padding-top:14px">{{ t.deg.cond }}</span>
+</div>
+<div style="flex:2 1 460px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 40px;align-content:start">
+<sc-for list="{{ degust }}" as="d" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:6px;padding:16px 0;border-top:1px solid rgba(231,217,191,.14)"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ d.h }}</span><span style="font:400 20px/1.35 'Cormorant Garamond';color:#f7f1e5">{{ d.items }}</span></div></sc-for>
+</div>
+</div>
+</div>
+<div id="c-bebidas" style="background:#221810;padding:clamp(64px,8vw,110px) clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:32px 56px">
+
+<div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:20px">
+<h2 style="margin:0;display:flex;gap:20px;align-items:baseline;font:400 clamp(44px,4.6vw,64px)/1 'Cormorant Garamond'">{{ t.carta.drinks }}<span style="font:400 28px 'Noto Serif JP';color:#c2402f">お酒</span></h2>
+<p style="margin:0 0 24px;font:400 17px/1.6 'Jost';color:#e7d9bf">{{ t.beber.intro }}</p>
+<div style="columns:300px;column-gap:56px">
+<sc-for list="{{ bebidas }}" as="b" hint-placeholder-count="8"><div style="break-inside:avoid;display:flex;flex-direction:column;margin-bottom:40px"><span style="font:500 12px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284;padding-bottom:10px">{{ b.name }}</span><sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid rgba(231,217,191,.12);font:400 19px/1.25 'Cormorant Garamond'"><span>{{ it.name }}</span><span style="font:400 14px 'Jost';color:#b3a284;white-space:nowrap">{{ it.price }}</span></div></sc-for></div></sc-for>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px 56px;padding:clamp(56px,7vw,96px) clamp(20px,4vw,56px);align-items:center;justify-content:space-between">
+<div style="font:400 clamp(34px,3.6vw,52px)/1.05 'Cormorant Garamond'">{{ t.res.title }}</div>
+<a onClick="{{ openRes }}" style="background:#a63325;color:#f7f1e5;padding:20px 40px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase">{{ t.hero.cta1 }}</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGrupos }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="position:relative;height:clamp(560px,80vh,760px);overflow:hidden">
+<img src="uploads/sake-izakaya-web/public/gallery/sake-033.jpg" alt="{{ t.grupos.alt2 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%">
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,10,8,.92) 0%,rgba(12,10,8,.5) 60%,rgba(12,10,8,.2)),linear-gradient(0deg,rgba(12,10,8,.7),rgba(12,10,8,0) 50%)"></div>
+<div data-reveal="1" style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(48px,8vw,96px);display:flex;flex-direction:column;gap:22px;max-width:780px">
+
+<h1 style="margin:0;font:400 clamp(52px,7.4vw,104px)/0.92 'Cormorant Garamond'">{{ t.grupos.title }}</h1>
+<p style="margin:0;font:400 clamp(15px,1.4vw,19px)/1.6 'Jost';color:#e7d9bf">{{ t.grupos.sub }}</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-top:1px solid rgba(231,217,191,.12)">
+<sc-for list="{{ menus }}" as="mm" hint-placeholder-count="3">
+<div data-reveal="1" style="background:#14110e;border-bottom:1px solid rgba(231,217,191,.12);border-right:1px solid rgba(231,217,191,.12);padding:clamp(40px,5vw,64px) clamp(24px,3.4vw,48px);display:flex;flex-direction:column;gap:28px;min-height:480px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:italic 400 24px 'Cormorant Garamond';color:#c2402f">{{ t.grupos.menuWord }} {{ mm.n }}</span><span style="font:400 40px 'Noto Serif JP';color:#e7d9bf">{{ mm.jp }}</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="font:400 clamp(60px,6vw,84px)/0.95 'Cormorant Garamond'">{{ mm.name }}</div><sc-if value="{{ mm.hasSub }}" hint-placeholder-val="{{ false }}"><span style="font:italic 400 22px 'Cormorant Garamond';color:#e0644f">{{ mm.sub }}</span></sc-if></div>
+<div style="display:flex;align-items:baseline;gap:12px;border-top:1px solid rgba(231,217,191,.2);padding-top:24px"><span style="font:400 64px/1 'Cormorant Garamond'">{{ mm.price }} €</span><span style="font:400 15px 'Jost';color:#b3a284">{{ t.grupos.pp }}</span></div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<sc-for list="{{ mm.secs }}" as="sc" hint-placeholder-count="1"><div style="display:flex;flex-direction:column;gap:8px"><sc-if value="{{ sc.hasH }}" hint-placeholder-val="{{ false }}"><span style="font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#e0644f">{{ sc.h }}</span></sc-if><sc-for list="{{ sc.items }}" as="it" hint-placeholder-count="4"><span style="font:400 19px/1.3 'Cormorant Garamond';color:#f7f1e5;padding:6px 0;border-bottom:1px solid rgba(231,217,191,.1)">{{ it.t }}</span></sc-for></div></sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:40px 56px;padding:clamp(64px,8vw,110px) clamp(20px,4vw,56px);align-items:flex-start">
+
+<div data-reveal="1" style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column">
+<sc-for list="{{ conds }}" as="cd" hint-placeholder-count="4"><div style="display:flex;flex-wrap:wrap;gap:6px 24px;padding:22px 0;border-top:1px solid rgba(231,217,191,.14);font:400 17px 'Jost';color:#e7d9bf"><span style="flex:0 0 200px;font:500 11px 'Jost';letter-spacing:.3em;text-transform:uppercase;color:#b3a284">{{ cd.k }}</span><span>{{ cd.v }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:32px 56px;padding:clamp(56px,7vw,88px) clamp(20px,4vw,56px);align-items:center;justify-content:space-between;background:#221810">
+<div style="display:flex;flex-direction:column;gap:12px"><div style="font:400 clamp(34px,3.6vw,52px)/1.05 'Cormorant Garamond'">{{ t.grupos.order }}</div><a href="tel:+34611450445" style="font:400 30px 'Cormorant Garamond'">{{ t.res.phone }}</a></div>
+<div style="display:flex;flex-wrap:wrap;gap:14px"><a href="{{ waGrupos }}" target="_blank" style="display:flex;align-items:center;gap:10px;background:#a63325;color:#f7f1e5;padding:20px 36px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>WhatsApp</a><a href="tel:+34611450445" style="border:1px solid rgba(231,217,191,.5);color:#e7d9bf;padding:19px 36px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase">{{ t.call }}</a></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRegalar }}" hint-placeholder-val="{{ false }}">
+<div style="padding-top:88px">
+<div style="display:flex;flex-wrap:wrap;min-height:clamp(560px,70vh,760px)">
+<div data-reveal="1" style="flex:1 1 460px;min-width:0;box-sizing:border-box;padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+<div style="display:flex;flex-direction:column;gap:28px">
+
+<h1 style="margin:0;font:400 clamp(52px,6.6vw,96px)/0.95 'Cormorant Garamond'">{{ t.regalar.title }}</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:22px;max-width:560px">
+<p style="margin:0;font:400 clamp(17px,1.5vw,20px)/1.6 'Jost';color:#e7d9bf">{{ t.regalar.text }}</p>
+<p style="margin:0;font:400 15px/1.6 'Jost';color:#b3a284">{{ t.regalar.how }}</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center"><a href="{{ waRegalar }}" target="_blank" style="display:flex;align-items:center;gap:10px;background:#a63325;color:#f7f1e5;padding:20px 36px;font:500 13px 'Jost';letter-spacing:.25em;text-transform:uppercase"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block;fill:currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>{{ t.regalar.cta }}</a><span style="font:400 14px 'Jost';color:#b3a284">{{ t.regalar.orCall }}</span></div>
+</div>
+</div>
+<div style="flex:1 1 460px;min-width:0;position:relative;min-height:420px;overflow:hidden"><img src="uploads/sake-izakaya-web/public/gallery/sake-001.jpg" alt="{{ t.regalar.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0;border-top:1px solid rgba(231,217,191,.12);border-bottom:1px solid rgba(231,217,191,.12)">
+<sc-for list="{{ gifts }}" as="gf" hint-placeholder-count="2"><div data-reveal="1" style="border-right:1px solid rgba(231,217,191,.12);padding:clamp(40px,5vw,72px) clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:18px"><span style="font:400 clamp(34px,3.4vw,48px)/1.05 'Cormorant Garamond'">{{ gf.n }}</span><span style="font:400 clamp(48px,5vw,72px)/1 'Cormorant Garamond';color:#e7d9bf">{{ gf.p }}</span><sc-if value="{{ gf.hasS }}" hint-placeholder-val="{{ false }}"><span style="font:400 15px/1.5 'Jost';color:#b3a284">{{ gf.s }}</span></sc-if></div></sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isJlab }}" hint-placeholder-val="{{ false }}">
+<div style="padding-top:88px;background:#0c0a08">
+<div style="display:flex;flex-wrap:wrap;min-height:clamp(600px,80vh,820px)">
+<div data-reveal="1" style="flex:1 1 460px;min-width:0;box-sizing:border-box;padding:clamp(56px,8vw,120px) clamp(20px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+<div style="display:flex;flex-direction:column;gap:36px">
+
+<div style="width:clamp(130px,14vw,200px);aspect-ratio:200/222;border:4px solid #e7d9bf;box-sizing:border-box;padding:6%;display:flex;flex-direction:column;justify-content:space-between;color:#e7d9bf"><div style="display:flex;justify-content:space-between"><span style="font:600 clamp(10px,1vw,15px) 'IBM Plex Mono',monospace">01</span><span style="font:900 clamp(12px,1.4vw,20px) 'Zen Kaku Gothic New';color:#c2402f">実験</span></div><div style="font:700 clamp(64px,7.2vw,104px)/0.8 'Space Grotesk';letter-spacing:-.06em">J<span style="color:#c2402f">.</span>L</div><div style="font:600 clamp(8px,.8vw,11px) 'IBM Plex Mono',monospace;letter-spacing:.08em">OMAKASE</div></div>
+<div style="display:flex;flex-direction:column;gap:18px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px"><span lang="ja" style="font:600 clamp(40px,5vw,72px)/1.1 'Noto Serif JP';letter-spacing:.06em;color:#f7f1e5">一見さんお断り</span><span style="font:italic 400 clamp(20px,2vw,28px) 'Cormorant Garamond';color:#e0644f">ichigen-san okotowari</span></div><h1 style="margin:0;font:400 clamp(40px,5vw,72px)/1 'Cormorant Garamond'">{{ t.jlab.line1 }}</h1></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;max-width:520px">
+<p style="margin:0;font:400 18px/1.65 'Jost';color:#e7d9bf">{{ t.jlab.line2 }}</p>
+<p style="margin:0;font:400 15px/1.6 'Jost';color:#b3a284">{{ t.jlab.line3 }}</p>
+</div>
+</div>
+<div style="flex:1 1 460px;min-width:0;position:relative;min-height:420px;overflow:hidden"><img src="uploads/sake-izakaya-web/public/gallery/sake-022.jpg" alt="{{ t.jlab.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px">
+<img src="uploads/sake-izakaya-web/public/gallery/sake-034.jpg" alt="" style="width:100%;height:clamp(280px,36vw,520px);object-fit:cover">
+<img src="uploads/sake-izakaya-web/public/gallery/sake-031.jpg" alt="" style="width:100%;height:clamp(280px,36vw,520px);object-fit:cover">
+<img src="uploads/sake-izakaya-web/public/gallery/sake-019.jpg" alt="" style="width:100%;height:clamp(280px,36vw,520px);object-fit:cover">
+</div>
+<div style="padding:56px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font:400 15px 'Jost';color:#b3a284"><span>J.L.ab · Sake Izakaya · {{ t.res.addr1 }}, Málaga</span></div>
+</div>
+</sc-if>
+
+<div style="padding:32px clamp(20px,4vw,56px) {{ footPad }};border-top:1px solid rgba(231,217,191,.1);display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;font:400 13px 'Jost';color:#b3a284">
+<span>© Sake Izakaya · {{ t.foot }} · {{ t.res.addr1 }} · {{ t.res.phone }}</span>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px"><a onClick="{{ goJlab }}" style="color:#b3a284">J.L.ab</a><a href="https://www.instagram.com/sakeizakaya/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#b3a284"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".6" style="fill:currentColor"></circle></svg><span>Instagram</span></a><a href="https://www.youtube.com/@Sakeizakayamalaga" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#b3a284"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.2v5.6l4.8-2.8z" style="fill:currentColor"></path></svg><span>YouTube</span></a><a href="{{ taUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#b3a284"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><circle cx="7" cy="13" r="3.5"></circle><circle cx="17" cy="13" r="3.5"></circle><circle cx="7" cy="13" r=".8" style="fill:currentColor"></circle><circle cx="17" cy="13" r=".8" style="fill:currentColor"></circle><path d="M3 8.5h3.5M17.5 8.5H21M8 7.5c2.6-1.4 5.4-1.4 8 0M12 16.5l-1.2 1.5h2.4z"></path></svg><span>TripAdvisor</span></a><a onClick="{{ toggleLang }}" style="color:#b3a284">{{ t.otherLang }}</a></div>
+</div>
+
+<sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:2fr 1fr 1fr;background:#0c0a08;border-top:1px solid rgba(231,217,191,.15);padding:10px 10px calc(10px + env(safe-area-inset-bottom));gap:8px">
+<a onClick="{{ openRes }}" style="background:#a63325;color:#f7f1e5;display:flex;align-items:center;justify-content:center;height:50px;font:500 13px 'Jost';letter-spacing:.2em;text-transform:uppercase">{{ t.nav.book }}</a>
+<a href="{{ waLink }}" target="_blank" style="border:1px solid rgba(231,217,191,.3);display:flex;align-items:center;justify-content:center;height:50px;box-sizing:border-box;font:500 12px 'Jost'">WhatsApp</a>
+<a href="tel:+34611450445" style="border:1px solid rgba(231,217,191,.3);display:flex;align-items:center;justify-content:center;height:50px;box-sizing:border-box;font:500 12px 'Jost'">{{ t.call }}</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeLb }}" data-nofx="1" style="position:fixed;inset:0;z-index:70;background:rgba(12,10,8,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;animation:lbIn .3s">
+<img src="{{ lb.src }}" alt="{{ lb.label }}" style="max-width:min(1100px,100%);max-height:80vh;object-fit:contain">
+<div style="display:flex;gap:16px;align-items:baseline;color:#e7d9bf"><span style="font:400 22px 'Noto Serif JP';color:#c2402f">{{ lb.kanji }}</span><span style="font:italic 400 22px 'Cormorant Garamond'">{{ lb.label }}</span></div>
+<div style="display:flex;gap:24px;font:500 12px 'Jost';letter-spacing:.25em"><a onClick="{{ lbPrev }}">←</a><span style="color:#b3a284">{{ lbCount }}</span><a onClick="{{ lbNext }}">→</a></div>
+</div>
+</sc-if>
+
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: "home", lang: "es", w: typeof window !== "undefined" ? window.innerWidth : 1440, y: 0, menu: false, lb: null, res: false, step: "form",
+    f: { fecha: "", servicio: 1, hora: "", personas: "2", nombre: "", tel: "", notas: "" }, errs: {} };
+
+  vref = (el) => { if (el && !el._init) { el._init = true; el.muted = true; el.loop = true; el.playsInline = true; el.setAttribute("playsinline", ""); el.play && el.play().catch(() => {}); } };
+
+  galRef = (el) => { this._gal = el; };
+  galTo(i) { const el = this._gal; if (!el) return; const n = GALLERY.length, j = (i + n) % n; el.scrollTo({ left: j * el.clientWidth, behavior: "smooth" }); this.setState({ gi: j }); }
+  galDown = (e) => {
+    const el = this._gal; if (!el) return; const x0 = e.clientX, s0 = el.scrollLeft; this._dragged = false; el.style.cursor = "grabbing";
+    const mv = (ev) => { const d = ev.clientX - x0; if (Math.abs(d) > 5) this._dragged = true; el.scrollLeft = s0 - d; };
+    const up = () => { el.style.cursor = "grab"; window.removeEventListener("mousemove", mv); window.removeEventListener("mouseup", up); setTimeout(() => (this._dragged = false), 0); };
+    window.addEventListener("mousemove", mv); window.addEventListener("mouseup", up);
+  };
+  componentDidMount() {
+    this._r = () => { this.setState({ w: window.innerWidth }); this.fx(); };
+    this._s = () => { this.fx(); const y = window.scrollY; if ((y > 40) !== (this.state.y > 40)) this.setState({ y }); };
+    window.addEventListener("resize", this._r); window.addEventListener("scroll", this._s, { passive: true });
+    this.reveal();
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this._r); window.removeEventListener("scroll", this._s); this._io && this._io.disconnect(); }
+  componentDidUpdate(_, ps) { if (ps.page !== this.state.page || ps.lang !== this.state.lang) setTimeout(() => this.reveal(), 30); }
+  reveal() {
+    if (!("IntersectionObserver" in window)) return;
+    this._io && this._io.disconnect();
+    const MODE = "cine", ease = "cubic-bezier(.22,1,.36,1)";
+    const show = (el) => { el.style.opacity = "1"; el.style.transform = "none"; el.style.clipPath = "inset(0 0 0 0)"; };
+    this._io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { show(e.target); this._io.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll("[data-reveal], img").forEach((el) => {
+      if (el.closest("[data-nofx]") || el.dataset.par) return;
+      if (el.dataset.rv) { if (el.style.opacity === "0" || (el.style.clipPath && el.style.clipPath !== "inset(0px)" && el.style.clipPath !== "inset(0 0 0 0)")) this._io.observe(el); return; }
+      el.dataset.rv = "1";
+      const r = el.getBoundingClientRect(); if (r.top < window.innerHeight * 0.92) return;
+      const img = el.tagName === "IMG";
+      if (img && MODE === "cine") { el.style.opacity = "0"; el.style.transform = "scale(1.08)"; el.style.transition = `opacity 1.4s ${ease}, transform 2.4s ${ease}`; }
+      else if (img && MODE === "tinta") { el.style.clipPath = "inset(0 0 100% 0)"; el.style.transition = `clip-path 1.6s ${ease}`; }
+      else if (img && MODE === "mosaico") { el.style.opacity = "0"; el.style.transform = "translateY(80px)"; el.style.transition = `opacity 1.2s ${ease}, transform 1.8s ${ease}`; }
+      else { el.style.opacity = "0"; el.style.transform = MODE === "tinta" ? "translateY(14px)" : "translateY(28px)"; el.style.transition = `opacity 1.1s ${ease}, transform 1.1s ${ease}`; }
+      this._io.observe(el);
+    });
+    this.fx();
+  }
+  fx() {
+    const vh = window.innerHeight;
+    document.querySelectorAll("[data-par]").forEach((el) => { const p = el.parentElement.getBoundingClientRect(); if (p.bottom < -200 || p.top > vh + 200) return; const c = p.top + p.height / 2 - vh / 2; el.style.transform = `translate3d(0,${(-c * parseFloat(el.dataset.par)).toFixed(1)}px,0) scale(${el.dataset.sc || 1.18})`; });
+    const th = document.getElementById("thread"); if (th) { const d = document.documentElement; th.style.height = (100 * window.scrollY / Math.max(1, d.scrollHeight - vh)).toFixed(2) + "%"; }
+  }
+  go(page, anchor) {
+    this.setState({ page, menu: false }, () => {
+      setTimeout(() => {
+        const el = anchor && document.getElementById(anchor);
+        window.scrollTo({ top: el ? el.getBoundingClientRect().top + window.scrollY - 80 : 0, behavior: el ? "smooth" : "auto" });
+      }, 40);
+    });
+  }
+  setF(k, v) { this.setState((s) => ({ f: { ...s.f, [k]: v, ...(k === "servicio" ? { hora: "" } : {}) }, errs: { ...s.errs, [k]: false } })); }
+  today() { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+  submit() {
+    const f = this.state.f, e = {};
+    if (!f.fecha || f.fecha < this.today()) e.fecha = "date";
+    else { const wd = new Date(f.fecha + "T12:00:00").getDay(); if (wd === 0 || wd === 1) e.fecha = "closed"; }
+    if (!f.hora) e.hora = true;
+    if (f.nombre.trim().length < 2) e.nombre = true;
+    if (!/^[+\d][\d\s().-]{6,}$/.test(f.tel.trim())) e.tel = true;
+    this.setState({ errs: e, step: Object.keys(e).length ? "form" : "done" });
+  }
+
+  renderVals() {
+    const s = this.state, L = s.lang, t = DICT[L], m = s.w < 900, P = (a) => (Array.isArray(a) ? a[L === "es" ? 0 : 1] : a);
+    const G = (n) => `uploads/sake-izakaya-web/public/gallery/sake-${n}.jpg`;
+    const pr = (p) => (L === "en" ? p.replace(/(\d),(\d)/g, "$1.$2") : p);
+    const carta = CARTA.map((c, i) => {
+      const items = c.items.map((it) => ({ name: P(it[0]), desc: P(it[1]), price: pr(it[2]) }));
+      return { n: "0" + (i + 1), id: "c-" + c.name.toLowerCase(), name: c.name, jp: c.jp, tag: P(c.tag), img: G(c.img), items, top: items.filter((_, j) => c.top.includes(j)),
+        hasStar: !!c.star, star: c.star ? { name: c.star.name, tag: P(c.star.tag), desc: P(c.star.desc), pax: c.star.pax, price: c.star.price, when: P(c.star.when) } : {},
+        jump: () => { const el = document.getElementById("c-" + c.name.toLowerCase()); el && window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: "smooth" }); } };
+    });
+    const sv = SERVICES[s.f.servicio];
+    const navItems = [["carta", t.nav.menu, () => this.go("carta")], ["casa", t.nav.house, () => this.go("home", "s-casa")], ["grupos", t.nav.groups, () => this.go("grupos")], ["regalar", t.nav.gift, () => this.go("regalar")]];
+    const wa = (msg) => `https://wa.me/34611450445?text=${encodeURIComponent(msg)}`;
+    const f = s.f, svLabel = P(sv.label);
+    const summary = L === "es"
+      ? `${f.nombre.split(" ")[0]}, mesa para ${f.personas} el ${f.fecha} a las ${f.hora} (${svLabel.toLowerCase()}). Confírmala por WhatsApp y te respondemos en breve.`
+      : `${f.nombre.split(" ")[0]}, a table for ${f.personas} on ${f.fecha} at ${f.hora} (${svLabel.toLowerCase()}). Confirm it on WhatsApp and we'll reply shortly.`;
+    const waMsg = (L === "es" ? "Hola, quiero reservar en Sake Izakaya:" : "Hello, I'd like to book at Sake Izakaya:") +
+      `\n• ${t.f.name}: ${f.nombre}\n• ${t.f.people}: ${f.personas}\n• ${t.f.date}: ${f.fecha} ${f.hora} (${svLabel})\n• ${t.f.phone}: ${f.tel}` + (f.notas ? `\n• ${t.f.notes}: ${f.notas}` : "");
+    const red = "#c2402f", dim = "#b3a284", lbItem = s.lb !== null ? GALLERY[s.lb] : null;
+    const errMsg = s.errs.fecha === "closed" ? t.f.errClosed : t.f.err;
+    return {
+      t, desk: !m, mob: m, jlabNav: { color: s.page === "jlab" ? "#f7f1e5" : "#e7d9bf", line: s.page === "jlab" ? "#a63325" : "transparent" },
+      taUrl: `https://www.tripadvisor.${L === "es" ? "es" : "com"}/Restaurant_Review-g187438-d13196598-Reviews-Sake_Izakaya-Malaga_Costa_del_Sol_Province_of_Malaga_Andalucia.html`, deskHdr: s.w >= 1100, mobHdr: s.w < 1100, wide: s.w >= 1200, narrow: s.w < 1200, isHome: s.page === "home", isCarta: s.page === "carta", isGrupos: s.page === "grupos", isRegalar: s.page === "regalar", isJlab: s.page === "jlab",
+      hdrBg: s.page === "home" && s.y < 40 && !s.menu ? "linear-gradient(180deg,rgba(12,10,8,.7),rgba(12,10,8,0))" : "rgba(20,17,14,.96)",
+      hdrLine: s.page === "home" && s.y < 40 ? "transparent" : "rgba(231,217,191,.1)",
+      juanGrad: m ? "linear-gradient(0deg,rgba(12,10,8,.96) 40%,rgba(12,10,8,0) 80%)" : s.w < 1200 ? "linear-gradient(270deg,rgba(12,10,8,.96) 0%,rgba(12,10,8,.9) 58%,rgba(12,10,8,.2) 85%)" : "linear-gradient(270deg,rgba(12,10,8,.95) 0%,rgba(12,10,8,.85) 42%,rgba(12,10,8,0) 70%)",
+      stickyTop: m ? "72px" : "86px", footPad: m ? "100px" : "32px",
+      menuOpen: s.menu && s.w < 1100, menuLabel: s.menu ? t.f.close.toUpperCase() : "MENÚ",
+      nav: navItems.map(([k, label, fn]) => ({ label, go: fn, color: s.page === k ? "#f7f1e5" : "#e7d9bf", line: s.page === k ? "#a63325" : "transparent" })),
+      toggleLang: () => this.setState({ lang: L === "es" ? "en" : "es" }), toggleMenu: () => this.setState({ menu: !s.menu }),
+      goHome: () => this.go("home"), goCarta: () => this.go("carta"), goBebidas: () => this.go("carta", "c-bebidas"), goGrupos: () => this.go("grupos"), goRegalar: () => this.go("regalar"), goJlab: () => this.go("jlab"),
+      jumpBebidas: () => { const el = document.getElementById("c-bebidas"); el && window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: "smooth" }); },
+      vref: this.vref,
+      carta, sakes: BEBIDAS[0].items.map((i) => ({ name: i[0], price: i[1] })),
+      bebidas: BEBIDAS.map((b) => ({ name: P(b.name), items: b.items.map((i) => ({ name: P(i[0]), price: i[1] })) })),
+      casa: CASA.map((c, i) => ({ title: P(c.title), jp: c.jp, desc: P(c.desc), img: c.img ? G(c.img) : "", alt: P(c.alt), hasImg: !!c.img, noImg: !c.img, off: m ? "0px" : ["0px", "clamp(40px,6vw,96px)", "0px"][i % 3] })),
+      gallery: GALLERY.map((g, i) => { const S = [["clamp(260px,26vw,420px)", "clamp(340px,34vw,560px)", "0px"], ["clamp(220px,20vw,320px)", "clamp(280px,26vw,420px)", "clamp(60px,8vw,140px)"], ["clamp(300px,34vw,560px)", "clamp(220px,24vw,380px)", "0px"], ["clamp(200px,18vw,300px)", "clamp(300px,30vw,480px)", "clamp(-80px,-6vw,-40px)"]][i % 4]; return { src: G(g.img), label: P(g.label), kanji: g.kanji, w: S[0], h: S[1], mt: S[2], open: () => { if (!this._dragged) this.setState({ lb: i }); } }; }),
+      galRef: this.galRef, galDown: this.galDown,
+      galPrev: () => this.galTo((s.gi || 0) - 1), galNext: () => this.galTo((s.gi || 0) + 1),
+      galScroll: (e) => { const el = e.currentTarget, i = Math.round(el.scrollLeft / el.clientWidth); if (i !== (s.gi || 0)) this.setState({ gi: i }); },
+      galCur: (() => { const g = GALLERY[s.gi || 0]; return { kanji: g.kanji, label: P(g.label) }; })(),
+      galCount: `${String((s.gi || 0) + 1).padStart(2, "0")} / ${String(GALLERY.length).padStart(2, "0")}`,
+      lbOpen: s.lb !== null, lb: lbItem ? { src: G(lbItem.img), label: P(lbItem.label), kanji: lbItem.kanji } : {}, lbCount: s.lb !== null ? `${s.lb + 1} / ${GALLERY.length}` : "",
+      closeLb: () => this.setState({ lb: null }),
+      lbPrev: (e) => { e.stopPropagation(); this.setState({ lb: (s.lb + GALLERY.length - 1) % GALLERY.length }); },
+      lbNext: (e) => { e.stopPropagation(); this.setState({ lb: (s.lb + 1) % GALLERY.length }); },
+      quotes: REVIEWS[L].map((q) => ({ ...q, hasNote: !!q.note })),
+      degust: DEGUST.map(([hh, its]) => ({ h: P(hh), items: its.map(P).join(" · ") })),
+      gifts: t.regalar.opts.map(([n, p, sub]) => ({ n, p, s: sub, hasS: !!sub })),
+      menus: GMENUS.map((g, i) => ({ n: "0" + (i + 1), name: g.name, jp: g.jp, price: g.price, sub: P(g.sub), hasSub: !!P(g.sub), secs: g.secs.map((sc) => ({ h: P(sc.h), hasH: !!P(sc.h), items: sc.items.map((it) => ({ t: P(it) })) })) })),
+      conds: t.grupos.conds.map(([k, v]) => ({ k, v })),
+      waLink: wa(L === "es" ? "Hola, quiero reservar mesa en Sake para __ personas el __ a las __." : "Hello, I'd like to book a table at Sake for __ people on __ at __."),
+      waGrupos: wa(L === "es" ? "Hola, quiero información del menú de grupo para __ personas el __." : "Hello, I'd like information about the group menu for __ people on __."),
+      waRegalar: wa(L === "es" ? "Hola, quiero regalar una noche en Sake." : "Hello, I'd like to give a night at Sake as a gift."),
+      cmUrl: `https://www.covermanager.com/reserve/module_restaurant/sake-izakaya/${L === "es" ? "spanish" : "english"}`,
+      resOpen: s.res, isForm: s.step === "form", isDone: s.step === "done",
+      openRes: () => { const u = CM[L]; const w = window.open(u, "covermanager", "width=480,height=780,menubar=no,toolbar=no,location=no,status=no"); if (!w) window.location.href = u; }, closeRes: () => this.setState({ res: false }), backForm: () => this.setState({ step: "form" }),
+      today: this.today(), f,
+      people: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ v: String(n), label: `${n} ${n === 1 ? t.f.person : t.f.persons}` })).concat([{ v: "9", label: t.f.more }]),
+      services: SERVICES.map((x, i) => ({ label: P(x.label), pick: () => this.setF("servicio", i), bd: i === f.servicio ? "#a63325" : "rgba(231,217,191,.22)", bg: i === f.servicio ? "rgba(166,51,37,.25)" : "transparent" })),
+      slots: sv.slots.map((h) => ({ h, pick: () => this.setF("hora", h), bd: f.hora === h ? "#a63325" : "rgba(231,217,191,.22)", bg: f.hora === h ? "rgba(166,51,37,.25)" : "transparent" })),
+      err: { fecha: s.errs.fecha ? red : dim, hora: s.errs.hora ? red : dim, nombre: s.errs.nombre ? red : dim, tel: s.errs.tel ? red : dim },
+      hasErr: Object.values(s.errs).some(Boolean), errMsg,
+      onFecha: (e) => this.setF("fecha", e.target.value), onPersonas: (e) => this.setF("personas", e.target.value), onNombre: (e) => this.setF("nombre", e.target.value),
+      onTel: (e) => this.setF("tel", e.target.value), onNotas: (e) => this.setF("notas", e.target.value),
+      submitRes: () => this.submit(), summary, waRes: wa(waMsg),
+    };
+  }
+}
+
+const CM = { es: "https://www.covermanager.com/reserve/module_restaurant/sake-izakaya/spanish", en: "https://www.covermanager.com/reserve/module_restaurant/sake-izakaya/english" };
+const REVIEWS = {
+  es: [
+    { text: "«Era la primera vez que acudía a una taberna japonesa… nos trajo al cocinero para que nos preparase un menú a la carta y es la primera vez que me pasaba en la vida. El cocinero y dueño llamado Juan es un apasionado de su profesión… y NUNCA en mi vida había pagado una cuenta con tanta alegría.»", who: "Kino Filipino", src: "Google", note: "" },
+    { text: "«Sorprendente lugar. Vas pensando en el típico japonés de sushi, ves la carta y te quedas desorientado. Después de comer sales muy impresionado.»", who: "José Luis Sevilla", src: "Google", note: "" },
+    { text: "«Éramos escépticos con un japonés en España… Esto fue diferente, de los que te vuelan la cabeza, ¡y no encuentro palabras para describir lo bueno que estaba! El chef es increíblemente simpático, atento y sabe muchísimo, y te va guiando por los platos.»", who: "Peter D", src: "TripAdvisor", note: "Traducida del inglés" },
+  ],
+  en: [
+    { text: "«It was my first time at a Japanese tavern… they brought the cook over to prepare a menu just for us, and that had never happened to me before. The cook and owner, Juan, is passionate about his craft… and NEVER in my life had I paid a bill so happily.»", who: "Kino Filipino", src: "Google", note: "Translated from Spanish" },
+    { text: "«A surprising place. You go in expecting the typical sushi restaurant, look at the menu and feel lost. After eating, you leave truly impressed.»", who: "José Luis Sevilla", src: "Google", note: "Translated from Spanish" },
+    { text: "«We were sceptical about Japanese in Spain… This was blow our minds different and I cannot find the words to describe how good it was! The chef is incredibly friendly, helpful and knowledgable, and will guide you through the dishes.»", who: "Peter D", src: "TripAdvisor", note: "" },
+  ],
+};
+
+const DEGUST = [
+  [["Entrantes", "Starters"], [["Ensaladilla", "Potato salad"], "Sunomono", ["Sopa de miso", "Miso soup"]]],
+  ["Sashimi", [["Tiradito de hamachi", "Hamachi tiradito"], ["Aburi salmón", "Aburi salmon"], ["Atún kimuchi", "Kimuchi tuna"]]],
+  ["Agemono", [["Gambón tempura", "King prawn tempura"], ["Nem de pato", "Duck nem"]]],
+  ["Yakimono", [["Berenjena dengaku", "Dengaku aubergine"], ["Corvina yuan-yaki", "Yuan-yaki corvina"]]],
+  ["Nabemono", [["Curry japonés de rubia gallega", "Japanese curry with Galician beef"]]],
+  [["Postre", "Dessert"], [["Sopa de matcha, bizcocho marakyar", "Matcha soup, marakyar sponge"]]],
+];
+
+const PP = ["(1 ud/pax)", "(1 pc/person)"];
+const GMENUS = [
+  { name: "Matsuri", jp: "祭", price: "44", sub: "", secs: [
+    { h: ["Para compartir", "To share"], items: [["Ensaladilla de patata, edamame y pescado a la brasa", "Potato salad with edamame and charcoal-grilled fish"], ["Carpaccio de cecina de wagyu, rúcula y tomate pasificado", "Cured wagyu carpaccio, rocket and sun-dried tomato"], ["Croquetón de txangurro y tártara de la casa", "Spider crab croqueta with house tartare sauce"], ["Gambón en tempura", "King prawn tempura"]] },
+    { h: ["A elegir, individual", "Choose one, individual"], items: [["Medallón de rape, setas y nuestro bisque «Sake»", "Monkfish medallion, mushrooms and our «Sake» bisque"], ["o Carrillada de ternera a la cordobesa", "or Córdoba-style beef cheek"]] },
+    { h: ["Postre a compartir", "Dessert to share"], items: [] } ] },
+  { name: "Fuji", jp: "富士", price: "47", sub: "", secs: [
+    { h: "", items: [["Edamame salteado", "Sautéed edamame"], ["Ensaladilla", "Potato salad"], ["Aburi salmón", "Aburi salmon"], ["Atún kimuchi", "Kimuchi tuna"], ["Nem de pato (1 ud/pax)", "Duck nem (1 pc/person)"], ["Katsu de shiitake (1 ud/pax)", "Shiitake katsu (1 pc/person)"], "Sunomono ika", ["Berenjena dengaku", "Dengaku aubergine"], ["Brocheta de bimi", "Bimi skewer"], ["Corvina yuan", "Yuan corvina"], ["Curry japonés de rubia gallega", "Japanese curry with Galician beef"], ["Postres de la casa", "House desserts"]] } ] },
+  { name: "Kiwami", jp: "極", price: "58", sub: ["La excelencia", "Excellence"], secs: [
+    { h: "", items: [["Edamame salteado", "Sautéed edamame"], ["Ensaladilla", "Potato salad"], ["Aburi salmón", "Aburi salmon"], ["Atún kimuchi", "Kimuchi tuna"], ["Tiradito de hamachi", "Hamachi tiradito"], ["Katsu de shiitake (1 ud/pax)", "Shiitake katsu (1 pc/person)"], ["Nem de pato (1 ud/pax)", "Duck nem (1 pc/person)"], "Ika nikkei mayo", ["Brocheta de bimi", "Bimi skewer"], ["Corvina yuan", "Yuan corvina"], "Yakisoba «Boletus carbonara»", ["Presa ibérica ShioKoji con kimchi casero y yuca frita", "Iberian pork with shio koji, homemade kimchi and fried cassava"], ["Postres de la casa", "House desserts"]] } ] },
+];
+
+const SERVICES = [
+  { label: ["Comida", "Lunch"], slots: ["13:30", "14:00", "14:30", "15:00", "15:30", "16:00"] },
+  { label: ["Cena", "Dinner"], slots: ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"] },
+];
+
+const CARTA = [
+  { name: "Zensai", jp: "前菜", tag: ["Entrantes", "Starters"], img: "025", top: [1, 2, 4], items: [
+    [["Sopa miso", "Miso soup"], ["Del día", "Soup of the day"], "4,5"], [["Edamame salteado", "Sautéed edamame"], ["Mantequilla, ajo, jengibre y soja", "Butter, garlic, ginger and soy"], "6,5"],
+    [["Ensaladilla", "Potato salad"], ["Patata, pescado a la brasa, edamame y wasabi", "Potato, charcoal-grilled fish, edamame and wasabi"], "11,5"],
+    ["Sunomono ika", ["Ensalada de wakame y calamar", "Wakame and squid salad"], "14"], [["Gyozas ibéricas", "Iberian gyozas"], ["Dashi de yuzu-kosho", "Yuzu-kosho dashi"], "17"]] },
+  { name: "Tsukuri", jp: "造り", tag: ["Crudos y sashimi", "Raw & sashimi"], img: "023", top: [0, 1, 2], items: [
+    [["Aburi salmón", "Aburi salmon"], ["Kimizu e hinojo encurtido", "Kimizu and pickled fennel"], "18,9"], [["Tiradito de hamachi", "Hamachi tiradito"], ["Portobello y ají amarillo", "Portobello and yellow chilli"], "22"],
+    [["Sashimi del día", "Sashimi of the day"], ["Piezas según la pesca del día", "Pieces depending on the day's catch"], "24"], [["Atún kimuchi", "Kimuchi tuna"], ["Dados de atún picante y pepino encurtido", "Spicy tuna cubes and pickled cucumber"], "24"]] },
+  { name: "Agemono", jp: "揚物", tag: ["Fritos", "Fried"], img: "028", top: [0, 1, 3], items: [
+    ["Karaage", ["De pollo de corral", "Free-range chicken"], "13"], ["Ebi ten mayo", ["Gambón, wasabi, mayo", "King prawn, wasabi, mayonnaise"], "13,5"],
+    ["Ika nikkei mayo", ["Calamar, picante, salsa criolla", "Squid, spicy Nikkei sauce"], "16"], ["Yasai tempura", ["Tempura de verduras", "Vegetable tempura"], "16"],
+    [["Katsu de shiitake", "Shiitake katsu"], ["Shiitake, pollo, tártara japonesa (2 uds)", "Shiitake, chicken and Japanese tartare sauce (2 pcs)"], "9,5"], [["Nem de pato", "Duck nem"], ["Con mango y teriyaki", "Mango and teriyaki"], "11"]] },
+  { name: "Yakimono", jp: "焼物", tag: ["A la brasa y grill", "Grill & more"], img: "016", top: [0, 2, 3], items: [
+    [["Berenjena dengaku", "Dengaku aubergine"], ["Tomate cherry encurtido", "Pickled cherry tomato"], "14,5"], [["Brocheta de bimi", "Bimi skewer"], ["Panceta ibérica y taberu rayu, yaki-bimi", "Iberian pork belly, taberu rayu and yaki-bimi"], "16"],
+    [["Corvina yuan-yaki", "Yuan-yaki corvina"], ["Tirabeques", "Snow peas"], "24"], [["Presa ibérica de bellota", "Acorn-fed Iberian pork"], ["Shio koji, ensalada de kimchi", "Shio koji and kimchi salad"], "24"],
+    [["Magret de pato ahumado", "Smoked duck breast"], ["Encurtido de pera y rúcula", "Pickled pear and rocket"], "21"]] },
+  { name: "Nabemono", jp: "鍋物", tag: ["Guisos", "Hot pots & stews"], img: "014", top: [0, 1, 2], items: [
+    ["Yakisoba «Boletus carbonara»", ["Soba, setas japonesas y huevo onsen", "Soba noodles, Japanese mushrooms and onsen egg"], "18"],
+    [["Curry japonés de rubia gallega", "Japanese curry with Galician beef"], ["Albóndigas y fideos udon", "Meatballs and udon noodles"], "23"],
+    [["Sukiyaki de picaña de ternera", "Beef picanha sukiyaki"], ["Setas japonesas y trufa (2 pax)", "Japanese mushrooms and truffle (2 people)"], "28"],
+    [["Sukiyaki (opción vegana)", "Sukiyaki (vegan option)"], ["Setas japonesas y tofu", "Japanese mushrooms and tofu"], "20"]],
+    star: { name: "Japochuelo", tag: ["el plato de Juan", "Juan's dish"], desc: ["Caldo de rape, langostinos y mayonesa de su coral", "Monkfish broth, king prawns and coral mayonnaise"], pax: "2 pax", price: "24", when: ["Los martes, en la carta. El resto de la semana, por encargo.", "On Tuesdays, on the menu. The rest of the week, to order."] } },
+];
+
+const BEBIDAS = [
+  { name: ["Jarritas de sake", "Sake carafes"], items: [["Keigetsu Gin-no-Yume", "12,00"], ["Shalala · 300 ml", "17,00"], ["Sotenden · 750 ml", "39,00"], ["Akitora Junmai", "9,50"], ["Kubota", "10,00"], ["Choya Umeshu", "9,50"]] },
+  { name: ["Cervezas & refrescos", "Beers & soft drinks"], items: [[["Caña de Victoria", "Victoria draught"], "2,80"], ["Sapporo", "3,80"], ["Kirin", "3,60"], ["Victoria 0,0", "2,80"], [["Copa de Ribera · Ripa Dorii", "Glass of Ribera · Ripa Dorii"], "3,80"], [["Copa de Rioja · Garu", "Glass of Rioja · Garu"], "3,80"], [["Copa de Verdejo · Ripa Dorii", "Glass of Verdejo · Ripa Dorii"], "3,80"], [["Copa de Chardonnay · Entrechuelos", "Glass of Chardonnay · Entrechuelos"], "3,80"], ["Tinto de verano", "3,50"], [["Vermut", "Vermouth"], "4,00"], [["Refresco con gas", "Soft drink"], "2,80"], [["Refresco sin gas", "Still soft drink"], "2,60"], [["Agua", "Water"], "2,60"], [["Agua con gas", "Sparkling water"], "2,80"]] },
+  { name: ["Vinos · Rioja", "Wines · Rioja"], items: [["Luis Cañás Crianza", "28,00"], ["Garu Crianza", "21,00"]] },
+  { name: ["Vinos · Ribera del Duero", "Wines · Ribera del Duero"], items: [["Ripa Dorii Roble · Tempranillo", "22,00"], ["Pruno Crianza · Tempranillo · Cabernet · Merlot", "27,00"], ["Matarromera Crianza", "53,00"]] },
+  { name: ["Vinos · Sierras de Málaga", "Wines · Sierras de Málaga"], items: [["Descalzos Viejos", "27,00"]] },
+  { name: ["Blancos", "Whites"], items: [["Entrechuelos Chardonnay", "22,00"], ["Emina Albariño", "26,00"], ["Bobal · Vicente Gandía", "28,00"], ["Tilenus Godello · Bierzo", "26,00"], ["Ripa Verdejo", "21,00"], ["Manzanilla Alegría", "23,00"]] },
+  { name: ["Rosado", "Rosé"], items: [["Emina Rosé", "22,00"]] },
+  { name: ["Espumosos", "Sparkling"], items: [["Cava Miracle Brut · Vicente Gandía", "26,00"], ["Champagne Veuve Clicquot", "97,00"], ["Veuve Ambar", "28,00"]] },
+];
+
+const CASA = [
+  { title: ["La barra", "The counter"], jp: "カウンター", desc: ["Frente al chef, donde todo sucede.", "Facing the chef, where everything happens."], img: "015", alt: ["La cocina vista desde la barra", "The kitchen seen from the counter"] },
+  { title: ["El comedor", "The dining room"], jp: "客席", desc: ["Luz baja, madera y el ruido bueno de una taberna: la cocina que se oye, la mesa que pide otra ronda, nadie mirando el reloj.", "Low light, wood and the good noise of a tavern: the kitchen you can hear, the table asking for another round, nobody watching the clock."], img: "012", alt: ["Comensal en el comedor", "Guest in the dining room"] },
+  { title: ["Las noches", "The nights"], jp: "夜", desc: ["Sake que se sirve al otro, platos que van llegando, tiempo que se olvida.", "Sake poured for the other, plates arriving, time forgotten."], img: "001", alt: ["Tazas de sake con caligrafía", "Sake cups with calligraphy"] },
+];
+
+const GALLERY = [
+  { label: ["Tazas de sake con caligrafía", "Sake cups with calligraphy"], kanji: "酒", img: "001" },
+  { label: ["El filo del cuchillo, a punto", "The knife's edge, ready"], kanji: "技", img: "007" },
+  { label: ["El comedor al caer la noche", "The dining room at nightfall"], kanji: "灯", img: "015" },
+  { label: ["Brocheta a la brasa de carbón", "Charcoal-grilled skewer"], kanji: "火", img: "016" },
+  { label: ["Plato de autor entre humo", "Signature dish through the smoke"], kanji: "香", img: "033" },
+  { label: ["Chawanmushi y sake frío", "Chawanmushi and chilled sake"], kanji: "膳", img: "013" },
+  { label: ["El estudio del pescado", "The study of the fish"], kanji: "魚", img: "035" },
+  { label: ["Juan, en su cocina", "Juan, in his kitchen"], kanji: "匠", img: "005" },
+];
+
+const DICT = {
+  es: {
+    otherLang: "EN", call: "Llamar", pend: "[pendiente]", pendPhoto: "[pendiente] Foto de la terraza", st: { s1: "01 · La puerta", juan: "Te sientas", desp: "La despedida", vuelve: "Vuelve" }, foot: "Taberna japonesa · Málaga",
+    nav: { menu: "Carta", house: "La casa", groups: "Grupos y Navidad", gift: "Regalar", book: "Reservar" },
+    hero: { kicker: "Izakaya · Cocina japomalagueña por Juan López", title: "Japón, sin salir de Málaga.", alt: "Vídeo de Sake Izakaya", text: "Platos japomalagueños al centro de la mesa, sake hasta el borde y sin prisa: la cocina casera de Japón, con producto de Málaga.", cta1: "Reservar mesa", cta2: "Ver carta", days: "Martes a sábado", hours: "Comida 13:30 – 16:30 · Cena 20:00 – 00:00", award: "Nº 1 de 99 japoneses en Málaga · TripAdvisor" },
+    que: { def: "Lugar para beber sentado.", coda: "Aquí no hay sushi. Hay Japón.", label: "La puerta", quote: "«Lugar para beber sentado.»", text: "Una izakaya es el corazón social de la noche japonesa: platos pequeños que van llegando a la mesa, sake que se sirve al otro, conversación sin reloj. Ese espíritu, el de las tapas contado en japonés, es el que trajimos al Centro Histórico de Málaga.", alt: "Un plato servido sobre la barra de madera" },
+    otoshi: { def: "La tapa de bienvenida: lo primero que llega no es la bebida.", title: "Antes de pedir, ya hay algo en la mesa.", text: "Es el otōshi, la tapa con la que la casa te recibe. En las tabernas de barrio de Japón la cocina no busca impresionar, sino acoger, y aquí empieza igual.", alt: "Chawanmushi y sake frío" },
+    juan: { title: "Japonesa de oficio. Malagueña de producto.", p1: "Sake nace de los años que nuestro chef, Juan López Ramos, vivió inmerso en Japón: en sus mercados al amanecer, en sus barras de madera gastada, en esas tabernas de barrio donde la cocina no busca impresionar, sino acoger.", p2: "Aquí no hay atajos: producto respetado, técnica aprendida despacio y una sala pequeña a propósito, para cocinar de cerca, como se hace allí." },
+    come: { label: "La pizarra", title: "Al centro de la mesa.", intro: "Pide varios y compártelos sin prisa.", cta: "Carta completa" },
+    deg: { kicker: "Menú degustación", name: "De paseo por Sake", price: "59 €", cond: "Sin previa reserva · mesa completa" },
+    beber: { def: "Sake servido en masu, la cajita de madera, hasta que desborda.", label: "La primera copa", title: "Sake hasta el borde.", intro: "El sake llega en masu, la cajita de madera, y se sirve hasta que desborda: en Japón, así se dice que la casa no escatima. Y para la mesa, vinos de aquí y espumosos.", sakeHead: "Jarritas de sake", cta: "Vinos y espumosos", alt: "Botella de sake en la hornacina iluminada" },
+    casa: { label: "Van llegando", title: "Van llegando, uno a uno." },
+    gal: { label: "Galería", title: "Sake, en imágenes" },
+    dicen: { label: "Lo que dicen", title: "Si no te gusta la comida japonesa, ven.", ofN: "de 99 restaurantes japoneses de Málaga en TripAdvisor.", ta: "TripAdvisor · 280 opiniones", g: "Google · 569 reseñas", pend: "[pendiente] Reseña real de cliente", pendWho: "[pendiente] Nombre", pendSrc: "Google / TripAdvisor" },
+    grupos: { title: "La mesa entera.", cond: "Por persona · por encargo, con un día de antelación · mesa completa", cta: "Ver menús", alt: "Silueta de un comensal ante el círculo rojo", alt2: "Plato de autor entre humo", sub: "Por persona · por encargo, con un día de antelación · mesa completa", menuWord: "Menú", pp: "por persona", compo: "[pendiente] Composición del menú", how: "Cómo", condLbl: "Condiciones",
+      conds: [["Precio", "Por persona"], ["Encargo", "Por encargo, con un día de antelación"], ["Mesa", "Mesa completa"], ["Para", "Grupos y Navidad"]], xmas: "Navidad", xmasPend: "[pendiente] Fechas, menú de Navidad y condiciones para comidas y cenas de empresa.", order: "Encárgalo por teléfono o WhatsApp." },
+    regalar: { label: "Regalar Sake", title: "Regala una noche.", text: "Una noche en Sake, para quien tú quieras. Dos formas de regalarla:", opts: [["De paseo por Sake, para dos", "118 €", "El menú degustación para dos personas"], ["Importe libre", "desde 50 €", ""]], how: "Pídela por WhatsApp y te la enviamos en tarjeta digital o en papel. Se canjea al reservar. Válida seis meses.", cta: "Regalar", orCall: "o llama al +34 611 45 04 45", alt: "Tazas de sake con caligrafía" },
+    jlab: { label: "Arriba", line1: "Arriba.", line2: "Sobre la izakaya hay otra mesa. No tiene carta: Juan cocina al vuelo lo que le pide el día, como en las casas de Kioto que no abren la puerta a quien llega sin conocer a nadie.", line3: "Aquí no se reserva. Se sube de la mano de alguien.", title: "J.L.ab", alt: "Microbrotes sostenidos con pinzas de emplatar" },
+    carta: { title: "Clásicos de la casa", intro: "Cocina de autor libre y cercana, respetuosa con la tradición japonesa y con producto local. Platos pensados para el centro de la mesa: pide varios y compartid sin prisa.", note: "Precios en €.", drinks: "Carta de bebidas", drinksTab: "Para beber" },
+    res: { online: "Reservar online", title: "Te guardamos sitio.", text: "Japón, sin salir de Málaga.", cta: "Reservar", tagline: "Disponibilidad en tiempo real · CoverManager", hoursLbl: "Horario de cocina", lunch: "Comida", dinner: "Cena", note: "Abierto de martes a sábado. Domingo y lunes, cerrado.", addrLbl: "Dirección", addr1: "C. San Juan de Letrán 4", addr2: "29012 Málaga", map: "Cómo llegar", phoneLbl: "Teléfono", phone: "+34 611 45 04 45", wa: "También por WhatsApp", zone: "Estamos en pleno Centro Histórico de Málaga, una zona mayormente peatonal: lo más cómodo es venir andando o dejar el coche en cualquiera de los aparcamientos públicos del centro." },
+    f: { close: "Cerrar", date: "Fecha", people: "Comensales", person: "persona", persons: "personas", more: "Más de 8 (te llamamos)", service: "Servicio", time: "Hora", name: "Nombre", namePh: "Tu nombre", phone: "Teléfono", notes: "Notas", notesPh: "Alergias, ocasión…", submit: "Solicitar reserva", cm: "o reservar directamente en CoverManager", err: "Revisa los campos marcados en rojo.", errClosed: "Domingo y lunes, cerrado. Elige otro día.", doneTitle: "Casi está.", waConfirm: "Confirmar por WhatsApp", edit: "Cambiar datos" },
+  },
+  en: {
+    otherLang: "ES", call: "Call", pend: "[pending]", pendPhoto: "[pending] Terrace photo", st: { s1: "01 · The door", juan: "You sit down", desp: "The farewell", vuelve: "Come back" }, foot: "Japanese tavern · Málaga",
+    nav: { menu: "Menu", house: "The house", groups: "Groups & Christmas", gift: "Gift", book: "Book" },
+    hero: { kicker: "Izakaya · Japo-Malagueño cooking by Juan López", title: "Japan, without leaving Málaga.", alt: "Sake Izakaya video", text: "Japo-Malagueño plates for the middle of the table, sake to the brim and no hurry: Japanese home cooking, with produce from Málaga.", cta1: "Book a table", cta2: "View menu", days: "Tuesday to Saturday", hours: "Lunch 13:30 – 16:30 · Dinner 20:00 – 00:00", award: "Nº 1 of 99 Japanese in Málaga · TripAdvisor" },
+    que: { def: "A place to sit and drink.", coda: "There's no sushi here. There's Japan.", label: "The door", quote: "«A place to sit and drink.»", text: "An izakaya is the social heart of the Japanese night: small plates arriving one by one, sake poured for the other, conversation with no clock. That spirit, tapas told in Japanese, is what we brought to the Old Town of Málaga.", alt: "A plate served on the wooden counter" },
+    otoshi: { def: "The welcome bite: the first thing to arrive is not the drink.", title: "Before you order, something is already on the table.", text: "It's the otōshi, the small dish the house welcomes you with. In Japan's neighbourhood taverns the cooking doesn't try to impress, but to welcome, and here it starts the same way.", alt: "Chawanmushi and chilled sake" },
+    juan: { title: "Japanese by craft. Malagueña by produce.", p1: "Sake was born from the years our chef, Juan López Ramos, spent immersed in Japan: in its markets at dawn, at its worn wooden counters, in those neighbourhood taverns where the cooking doesn't try to impress, but to welcome.", p2: "There are no shortcuts here: produce that's respected, technique learned slowly and a room kept small on purpose, so we can cook up close, the way it's done over there." },
+    come: { label: "The board", title: "For the middle of the table.", intro: "Order a few and share them without hurry.", cta: "Full menu" },
+    deg: { kicker: "Tasting menu", name: "A stroll through Sake", price: "59 €", cond: "No prior booking needed · whole table" },
+    beber: { def: "Sake served in a masu, the little wooden box, until it overflows.", label: "The first drink", title: "Sake to the brim.", intro: "Sake arrives in a masu, the little wooden box, and is poured until it overflows: in Japan, that's how a house says it doesn't skimp. And for the table, local wines and sparkling.", sakeHead: "Sake carafes", cta: "Wines & sparkling", alt: "Sake bottle in the lit alcove" },
+    casa: { label: "Plates arrive", title: "They arrive, one by one." },
+    gal: { label: "Gallery", title: "Sake, in pictures" },
+    dicen: { label: "What they say", title: "If you don't like Japanese food, come.", ofN: "of 99 Japanese restaurants in Málaga on TripAdvisor.", ta: "TripAdvisor · 280 reviews", g: "Google · 569 reviews", pend: "[pending] Real guest review", pendWho: "[pending] Name", pendSrc: "Google / TripAdvisor" },
+    grupos: { title: "The whole table.", cond: "Per person · to order, one day in advance · whole table", cta: "See menus", alt: "Silhouette of a guest before the red circle", alt2: "Signature dish through the smoke", sub: "Per person · to order, one day in advance · whole table", menuWord: "Menu", pp: "per person", compo: "[pending] Menu contents", how: "How", condLbl: "Conditions",
+      conds: [["Price", "Per person"], ["Order", "To order, one day in advance"], ["Table", "Whole table"], ["For", "Groups and Christmas"]], xmas: "Christmas", xmasPend: "[pending] Dates, Christmas menu and conditions for company lunches and dinners.", order: "Order it by phone or WhatsApp." },
+    regalar: { label: "Gift Sake", title: "Give a night.", text: "A night at Sake, for whoever you like. Two ways to give it:", opts: [["A stroll through Sake, for two", "118 €", "The tasting menu for two people"], ["Open amount", "from 50 €", ""]], how: "Ask for it on WhatsApp and we'll send it as a digital or paper card. Redeemed when booking. Valid for six months.", cta: "Gift", orCall: "or call +34 611 45 04 45", alt: "Sake cups with calligraphy" },
+    jlab: { label: "Upstairs", line1: "Upstairs.", line2: "Above the izakaya there's another table. It has no menu: Juan cooks on the fly whatever the day asks for, like the houses in Kyoto that don't open their door to someone who arrives knowing no one.", line3: "It can't be booked here. You go up with someone who brings you.", title: "J.L.ab", alt: "Microgreens held with plating tweezers" },
+    carta: { title: "House classics", intro: "Free, approachable chef's cuisine, respectful of Japanese tradition and built on local produce. Dishes made for the middle of the table: order a few and share without hurry.", note: "Prices in €.", drinks: "Drinks menu", drinksTab: "To drink" },
+    res: { online: "Book online", title: "We'll save you a seat.", text: "Japan, without leaving Málaga.", cta: "Book", tagline: "Real-time availability · CoverManager", hoursLbl: "Kitchen hours", lunch: "Lunch", dinner: "Dinner", note: "Open Tuesday to Saturday. Closed Sunday and Monday.", addrLbl: "Address", addr1: "C. San Juan de Letrán 4", addr2: "29012 Málaga", map: "Get directions", phoneLbl: "Phone", phone: "+34 611 45 04 45", wa: "Also on WhatsApp", zone: "We're right in the heart of Málaga's Old Town, a mostly pedestrian area: the easiest way is to come on foot or leave the car in any of the public car parks in the centre." },
+    f: { close: "Close", date: "Date", people: "Guests", person: "guest", persons: "guests", more: "More than 8 (we'll call you)", service: "Service", time: "Time", name: "Name", namePh: "Your name", phone: "Phone", notes: "Notes", notesPh: "Allergies, occasion…", submit: "Request booking", cm: "or book directly on CoverManager", err: "Please check the fields marked in red.", errClosed: "Closed Sunday and Monday. Pick another day.", doneTitle: "Almost there.", waConfirm: "Confirm on WhatsApp", edit: "Change details" },
+  },
+};
+</script>
+</body>
+</html>
