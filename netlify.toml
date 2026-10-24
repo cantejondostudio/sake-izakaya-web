@@ -1,14 +1,12 @@
 # Despliegue en Netlify — Sake Izakaya (web premium, Next.js 16 App Router).
+# La web se exporta como estático (next.config.ts → output: "export"), así que
+# Netlify sirve la carpeta /out tal cual, sin el adaptador de Next.js.
+# Nota: /api/reserva es una Cloudflare Pages Function (functions/api/reserva.ts);
+# en Netlify no existe, así que el formulario propio de reservas daría error allí.
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   # Next.js 16 necesita Node moderno; fijamos 22 para evitar sorpresas.
   NODE_VERSION = "22"
-
-# Adaptador oficial de Next.js para Netlify: habilita el renderizado del
-# servidor y las rutas API (p. ej. /api/reserva) como funciones serverless.
-# Netlify lo instala al detectar Next; lo dejamos explícito por claridad.
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
